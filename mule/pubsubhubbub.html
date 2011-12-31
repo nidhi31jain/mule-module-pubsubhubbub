@@ -111,15 +111,19 @@
       <span id="masthead-title">Mule PubSubHubbub (aka PuSH) Module</span>
     
     <ul id="header-tabs" class="mule">
+    
     	<li id="guide"><a href="../guide/install.html">
 	    	<span class="en">Install Guide</span>
     	</a></li>
+    
     	<li id="java"><a href="../java/packages.html">
-	    	<span class="en">Java API</span>
+	    	<span class="en">Java API Reference</span>
     	</a></li>
+    
     	<li id="mule"><a href="../mule/modules.html">
-	    	<span class="en">Mule API</span>
+	    	<span class="en">Mule API Reference</span>
     	</a></li>
+    
     </ul>
     </div>
     <div id="headerRight">
@@ -227,7 +231,7 @@ Summary:
  href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html">PubSubHubbub Core 0.3 -- Working Draft
  specification</a>, except <a
  href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution">7.5 Aggregated
- Content Distribution</a>.<br/></p>
+ Content Distribution</a>.</p>
 
 
 </div><!-- jd-descr -->
@@ -369,6 +373,8 @@ specify which configuration to use.</p>
 
 
 
+
+
 <!-- ========= MESSAGE PROCESSOR DETAIL ======== -->
 <!-- Message Processors -->
 
@@ -391,56 +397,46 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Handle all hub requests.
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;flow name="hub"&gt;
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;flow name="hub"&gt;
     &lt;http:inbound-endpoint address="http://localhost:${port1}/hub" /&gt;
     &lt;pubsubhubbub:hub /&gt;
 &lt;/flow&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>payload</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The message payload<br/></td>
+                    <td class="jd-descrcol" width="100%">The message payload</td>
                 </tr>
                 
                 
           
                 
-                <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>responseHeaders</nobr></td>
-                    <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The outbound/response headers<br/></td>
-                </tr>
-                
-                
           
           
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
-                <td class="jd-descrcol">1</td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
-            </tr>
-            
           
-        
-      </table>
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
           
+            
+            <tr><th colspan="12"><nobr>&lt;pubsubhubbub:responseHeaders&gt;</nobr></br><span style="font-weight: normal;">The outbound/response headers</span></th></tr>
+            
             
           
       </table>
@@ -448,14 +444,16 @@ specify which configuration to use.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>the response body<br/></li></ul>
+      <ul class="nolist"><li>the response body</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
             <th></td>
-            <td>MuleException<br/></td>
+            <td>MuleException</td>
         </tr>
         <tr>
             <th>DecoderException</td>
