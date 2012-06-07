@@ -750,7 +750,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/HubModule.html#handleRequest(java.lang.Object, java.util.Map<java.lang.String, java.lang.Object>)">handleRequest</a></span>(Object payload, Map&lt;String,&nbsp;Object&gt; responseHeaders)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/HubModule.html#handleRequest(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)">handleRequest</a></span>(String httpMethod, String contentType, Map&lt;String,&nbsp;Object&gt; responseHeaders, String payload)</nobr>
         
         <div class="jd-descrdiv">Handle all hub requests.</div>
   
@@ -1598,7 +1598,7 @@ From interface
 </div>
 
 
-<A NAME="handleRequest(java.lang.Object, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+<A NAME="handleRequest(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1611,7 +1611,7 @@ From interface
         String
       </span>
       <span class="sympad">handleRequest</span>
-      <span class="normal">(Object payload, Map&lt;String,&nbsp;Object&gt; responseHeaders)</span>
+      <span class="normal">(String httpMethod, String contentType, Map&lt;String,&nbsp;Object&gt; responseHeaders, String payload)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1630,12 +1630,20 @@ From interface
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>payload</td>
-          <td>The message payload</td>
+          <th>httpMethod</td>
+          <td>The HTTP method name</td>
+        </tr>
+        <tr>
+          <th>contentType</td>
+          <td>The content-type of the request</td>
         </tr>
         <tr>
           <th>responseHeaders</td>
           <td>The outbound/response headers</td>
+        </tr>
+        <tr>
+          <th>payload</td>
+          <td>The message payload</td>
         </tr>
       </table>
   </div>
