@@ -1,9 +1,13 @@
+/.classpath
+/.settings
+/.project
+/.jruby
+/*.iml
+/*.ipr
+/*.iws
+/target
 *~
-.classpath
-.project
-.settings
 .springBeans
 .fbprefs
-target
 Ddo*
 ddo*
