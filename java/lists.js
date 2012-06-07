@@ -5,7 +5,7 @@ var DATA = [
       { id:3, label:"org.mule.module.pubsubhubbub.HubMode", link:"java/org/mule/module/pubsubhubbub/HubMode.html", type:"class" },
       { id:4, label:"org.mule.module.pubsubhubbub.HubModule", link:"java/org/mule/module/pubsubhubbub/HubModule.html", type:"class" },
       { id:5, label:"org.mule.module.pubsubhubbub.HubResponse", link:"java/org/mule/module/pubsubhubbub/HubResponse.html", type:"class" },
-      { id:6, label:"org.mule.module.pubsubhubbub.HubUtils", link:"java/org/mule/module/pubsubhubbub/HubUtils.html", type:"class" },
+      { id:6, label:"org.mule.module.pubsubhubbub.Utils", link:"java/org/mule/module/pubsubhubbub/Utils.html", type:"class" },
       { id:7, label:"org.mule.module.pubsubhubbub.VerificationType", link:"java/org/mule/module/pubsubhubbub/VerificationType.html", type:"class" },
       { id:8, label:"org.mule.module.pubsubhubbub.adapters", link:"java/org/mule/module/pubsubhubbub/adapters/package-summary.html", type:"package" },
       { id:9, label:"org.mule.module.pubsubhubbub.adapters.HubModuleCapabilitiesAdapter", link:"java/org/mule/module/pubsubhubbub/adapters/HubModuleCapabilitiesAdapter.html", type:"class" },
