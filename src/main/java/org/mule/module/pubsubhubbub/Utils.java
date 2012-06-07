@@ -14,14 +14,18 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.net.URLCodec;
 import org.apache.commons.lang.StringUtils;
+import org.mule.api.MuleException;
 
-public abstract class HubUtils
+public abstract class Utils
 {
-    private HubUtils()
+    private Utils()
     {
         throw new UnsupportedOperationException("do not instantiate");
     }
@@ -125,6 +129,52 @@ public abstract class HubUtils
         {
             use.printStackTrace();
             throw new IllegalArgumentException("Invalid URL parameter: " + name, use);
+        }
+    }
+
+    public static Map<String, List<String>> getHttpPostParameters(final String payload, final String encoding)
+        throws MuleException, DecoderException
+    {
+        final Map<String, List<String>> params = new HashMap<String, List<String>>();
+        addQueryStringToParameterMap(payload, params, encoding);
+        return params;
+    }
+
+    // lifted from org.mule.transport.http.transformers.HttpRequestBodyToParamMap
+    private static void addQueryStringToParameterMap(final String queryString,
+                                                     final Map<String, List<String>> paramMap,
+                                                     final String outputEncoding) throws DecoderException
+    {
+        final String[] pairs = queryString.split("&");
+        for (final String pair : pairs)
+        {
+            final String[] nameValue = pair.split("=");
+            if (nameValue.length == 2)
+            {
+                final URLCodec codec = new URLCodec(outputEncoding);
+                final String key = codec.decode(nameValue[0]);
+                final String value = codec.decode(nameValue[1]);
+                addToParameterMap(paramMap, key, value);
+            }
+        }
+    }
+
+    // lifted from org.mule.transport.http.transformers.HttpRequestBodyToParamMap
+    private static void addToParameterMap(final Map<String, List<String>> paramMap,
+                                          final String key,
+                                          final String value)
+    {
+        final List<String> existingValues = paramMap.get(key);
+
+        if (existingValues != null)
+        {
+            existingValues.add(value);
+        }
+        else
+        {
+            final List<String> values = new ArrayList<String>();
+            values.add(value);
+            paramMap.put(key, values);
         }
     }
 }

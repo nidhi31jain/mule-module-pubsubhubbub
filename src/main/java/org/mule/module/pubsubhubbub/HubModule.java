@@ -11,7 +11,6 @@
 package org.mule.module.pubsubhubbub;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,6 @@ import java.util.Map.Entry;
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.net.URLCodec;
 import org.apache.commons.lang.StringUtils;
 import org.mule.api.MuleContext;
 import org.mule.api.MuleException;
@@ -53,7 +51,7 @@ import org.mule.transport.http.HttpConstants;
  * 
  * @author MuleSoft, Inc.
  */
-@Module(name = "pubsubhubbub", schemaVersion = "3.2")
+@Module(name = "pubsubhubbub", schemaVersion = "3.3")
 public class HubModule implements MuleContextAware
 {
     private MuleContext muleContext;
@@ -152,7 +150,7 @@ public class HubModule implements MuleContextAware
     private HubResponse handleRequest(final String payload, final String encoding)
         throws MuleException, DecoderException
     {
-        final Map<String, List<String>> parameters = getHttpPostParameters(payload, encoding);
+        final Map<String, List<String>> parameters = Utils.getHttpPostParameters(payload, encoding);
 
         for (final Entry<String, List<String>> param : parameters.entrySet())
         {
@@ -165,8 +163,8 @@ public class HubModule implements MuleContextAware
         }
 
         // carry the request encoding as a parameters for usage downstream
-        HubUtils.setSingleValue(parameters, Constants.REQUEST_ENCODING_PARAM, encoding);
-        HubUtils.setSingleValue(parameters, Constants.HUB_DEFAULT_LEASE_SECONDS_PARAM,
+        Utils.setSingleValue(parameters, Constants.REQUEST_ENCODING_PARAM, encoding);
+        Utils.setSingleValue(parameters, Constants.HUB_DEFAULT_LEASE_SECONDS_PARAM,
             Long.toString(defaultLeaseSeconds));
 
         try
@@ -181,7 +179,7 @@ public class HubModule implements MuleContextAware
 
     private HubResponse handleRequest(final Map<String, List<String>> parameters)
     {
-        final HubMode hubMode = HubMode.parse(HubUtils.getMandatoryStringParameter(Constants.HUB_MODE_PARAM,
+        final HubMode hubMode = HubMode.parse(Utils.getMandatoryStringParameter(Constants.HUB_MODE_PARAM,
             parameters));
 
         return requestHandlers.get(hubMode).handle(parameters);
@@ -242,49 +240,4 @@ public class HubModule implements MuleContextAware
         return dataStore;
     }
 
-    private static Map<String, List<String>> getHttpPostParameters(final String payload, final String encoding)
-        throws MuleException, DecoderException
-    {
-        final Map<String, List<String>> params = new HashMap<String, List<String>>();
-        addQueryStringToParameterMap(payload, params, encoding);
-        return params;
-    }
-
-    // lifted from org.mule.transport.http.transformers.HttpRequestBodyToParamMap
-    private static void addQueryStringToParameterMap(final String queryString,
-                                                     final Map<String, List<String>> paramMap,
-                                                     final String outputEncoding) throws DecoderException
-    {
-        final String[] pairs = queryString.split("&");
-        for (final String pair : pairs)
-        {
-            final String[] nameValue = pair.split("=");
-            if (nameValue.length == 2)
-            {
-                final URLCodec codec = new URLCodec(outputEncoding);
-                final String key = codec.decode(nameValue[0]);
-                final String value = codec.decode(nameValue[1]);
-                addToParameterMap(paramMap, key, value);
-            }
-        }
-    }
-
-    // lifted from org.mule.transport.http.transformers.HttpRequestBodyToParamMap
-    private static void addToParameterMap(final Map<String, List<String>> paramMap,
-                                          final String key,
-                                          final String value)
-    {
-        final List<String> existingValues = paramMap.get(key);
-
-        if (existingValues != null)
-        {
-            existingValues.add(value);
-        }
-        else
-        {
-            final List<String> values = new ArrayList<String>();
-            values.add(value);
-            paramMap.put(key, values);
-        }
-    }
 }

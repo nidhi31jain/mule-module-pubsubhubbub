@@ -33,10 +33,9 @@ import org.mule.api.MuleMessage;
 import org.mule.api.retry.RetryCallback;
 import org.mule.api.retry.RetryContext;
 import org.mule.api.retry.RetryPolicyTemplate;
-import org.mule.module.client.MuleClient;
 import org.mule.module.pubsubhubbub.Constants;
 import org.mule.module.pubsubhubbub.HubResponse;
-import org.mule.module.pubsubhubbub.HubUtils;
+import org.mule.module.pubsubhubbub.Utils;
 import org.mule.module.pubsubhubbub.data.DataStore;
 import org.mule.module.pubsubhubbub.data.TopicSubscription;
 import org.mule.module.pubsubhubbub.rome.PerRequestUserAgentHttpClientFeedFetcher;
@@ -118,10 +117,10 @@ public class PublisherHandler extends AbstractHubActionHandler implements Fetche
 
         public void doWork(final RetryContext context) throws Exception
         {
-            final Map<String, String> headers = new HashMap<String, String>();
+            final Map<String, Object> headers = new HashMap<String, Object>();
             addHeaders(headers);
 
-            final MuleMessage response = new MuleClient(muleContext).send(
+            final MuleMessage response = muleContext.getClient().send(
                 contentDistributionContext.getCallbackUrl().toString(),
                 contentDistributionContext.getPayload(), headers, (int) Constants.SUBSCRIBER_TIMEOUT_MILLIS);
 
@@ -156,7 +155,7 @@ public class PublisherHandler extends AbstractHubActionHandler implements Fetche
             }
         }
 
-        protected void addHeaders(final Map<String, String> headers)
+        protected void addHeaders(final Map<String, Object> headers)
         {
             headers.put(HttpConstants.HEADER_CONTENT_TYPE, contentDistributionContext.getContentType());
         }
@@ -177,7 +176,7 @@ public class PublisherHandler extends AbstractHubActionHandler implements Fetche
         }
 
         @Override
-        protected void addHeaders(final Map<String, String> headers)
+        protected void addHeaders(final Map<String, Object> headers)
         {
             super.addHeaders(headers);
             headers.put(Constants.HUB_SIGNATURE_HEADER, "sha1=" + signature);
@@ -249,7 +248,7 @@ public class PublisherHandler extends AbstractHubActionHandler implements Fetche
     @Override
     public HubResponse handle(final Map<String, List<String>> formParams)
     {
-        final List<URI> hubUrls = HubUtils.getMandatoryUrlParameters(Constants.HUB_URL_PARAM, formParams);
+        final List<URI> hubUrls = Utils.getMandatoryUrlParameters(Constants.HUB_URL_PARAM, formParams);
         for (final URI hubUrl : hubUrls)
         {
             try

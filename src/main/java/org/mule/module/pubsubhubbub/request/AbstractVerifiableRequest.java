@@ -24,7 +24,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mule.module.pubsubhubbub.Constants;
-import org.mule.module.pubsubhubbub.HubUtils;
+import org.mule.module.pubsubhubbub.Utils;
 import org.mule.module.pubsubhubbub.VerificationType;
 import org.mule.module.pubsubhubbub.data.TopicSubscription;
 
@@ -44,17 +44,17 @@ public abstract class AbstractVerifiableRequest implements Serializable
     public AbstractVerifiableRequest(final Map<String, List<String>> formParams)
 
     {
-        callbackUrl = HubUtils.getMandatoryUrlParameter(Constants.HUB_CALLBACK_PARAM, formParams);
-        topicUrls = HubUtils.getMandatoryUrlParameters(Constants.HUB_TOPIC_PARAM, formParams);
+        callbackUrl = Utils.getMandatoryUrlParameter(Constants.HUB_CALLBACK_PARAM, formParams);
+        topicUrls = Utils.getMandatoryUrlParameters(Constants.HUB_TOPIC_PARAM, formParams);
         expiryTime = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(retrieveLeaseSeconds(formParams));
         secret = getSecretAsBytes(formParams);
         verificationType = retrieveSubscriptionVerificationMode(formParams);
-        verificationToken = HubUtils.getFirstValue(formParams, Constants.HUB_VERIFY_TOKEN_PARAM);
+        verificationToken = Utils.getFirstValue(formParams, Constants.HUB_VERIFY_TOKEN_PARAM);
     }
 
     private byte[] getSecretAsBytes(final Map<String, List<String>> formParams)
     {
-        final String secretAsString = HubUtils.getFirstValue(formParams, Constants.HUB_SECRET_PARAM);
+        final String secretAsString = Utils.getFirstValue(formParams, Constants.HUB_SECRET_PARAM);
 
         if (StringUtils.isEmpty(secretAsString))
         {
@@ -63,7 +63,7 @@ public abstract class AbstractVerifiableRequest implements Serializable
 
         try
         {
-            final byte[] secretAsBytes = secretAsString.getBytes(HubUtils.getMandatoryStringParameter(
+            final byte[] secretAsBytes = secretAsString.getBytes(Utils.getMandatoryStringParameter(
                 Constants.REQUEST_ENCODING_PARAM, formParams));
 
             if (secretAsBytes.length >= Constants.MAXIMUM_SECRET_SIZE)
@@ -124,7 +124,7 @@ public abstract class AbstractVerifiableRequest implements Serializable
 
     private long retrieveLeaseSeconds(final Map<String, List<String>> formParams)
     {
-        final String leaseSecondString = HubUtils.getFirstValue(formParams,
+        final String leaseSecondString = Utils.getFirstValue(formParams,
             Constants.HUB_LEASE_SECONDS_PARAM, Constants.HUB_DEFAULT_LEASE_SECONDS_PARAM);
         return Long.valueOf(leaseSecondString);
     }

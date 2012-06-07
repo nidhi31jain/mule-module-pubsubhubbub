@@ -7,6 +7,7 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
+
 package org.mule.module.pubsubhubbub;
 
 import java.net.URI;
@@ -21,7 +22,6 @@ import org.mule.api.MuleException;
 import org.mule.api.MuleMessage;
 import org.mule.api.retry.RetryCallback;
 import org.mule.api.retry.RetryContext;
-import org.mule.module.client.MuleClient;
 import org.mule.module.pubsubhubbub.handler.AbstractHubActionHandler;
 import org.mule.module.pubsubhubbub.request.AbstractVerifiableRequest;
 
@@ -104,7 +104,7 @@ public enum VerificationType
         {
             final URI verificationUrl = buildVerificationUrl(request, verificationChallenge);
 
-            final MuleMessage response = new MuleClient(muleContext).request(verificationUrl.toString(),
+            final MuleMessage response = muleContext.getClient().request(verificationUrl.toString(),
                 Constants.SUBSCRIBER_TIMEOUT_MILLIS);
 
             validateResponse(response, request, verificationChallenge);
