@@ -64,6 +64,8 @@
 
 
 
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -85,6 +87,7 @@
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
 <script src="../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
 <script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
 <script src="../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -103,6 +106,27 @@
     #resize-packages-nav{border-bottom:3px solid #666;}
   </style>
 </noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule PubSubHubbub (aka PuSH) Module";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
 </head>
 
 
@@ -185,6 +209,8 @@
     <li class="api apilevel-">
   <a href="../java/org/mule/module/pubsubhubbub/package-summary.html">org.mule.module.pubsubhubbub</a></li>
     <li class="api apilevel-">
+  <a href="../java/org/mule/module/pubsubhubbub/adapters/package-summary.html">org.mule.module.pubsubhubbub.adapters</a></li>
+    <li class="api apilevel-">
   <a href="../java/org/mule/module/pubsubhubbub/config/package-summary.html">org.mule.module.pubsubhubbub.config</a></li>
     <li class="api apilevel-">
   <a href="../java/org/mule/module/pubsubhubbub/config/spring/package-summary.html">org.mule.module.pubsubhubbub.config.spring</a></li>
@@ -192,6 +218,8 @@
   <a href="../java/org/mule/module/pubsubhubbub/data/package-summary.html">org.mule.module.pubsubhubbub.data</a></li>
     <li class="api apilevel-">
   <a href="../java/org/mule/module/pubsubhubbub/handler/package-summary.html">org.mule.module.pubsubhubbub.handler</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/module/pubsubhubbub/processors/package-summary.html">org.mule.module.pubsubhubbub.processors</a></li>
     <li class="api apilevel-">
   <a href="../java/org/mule/module/pubsubhubbub/request/package-summary.html">org.mule.module.pubsubhubbub.request</a></li>
     <li class="api apilevel-">
@@ -306,13 +334,25 @@
     
     
         <tr class="alt-color api apilevel-" >
-            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/spring/HandleRequestDefinitionParser.html">HandleRequestDefinitionParser</a></td>
+            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/HandleRequestDefinitionParser.html">HandleRequestDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/spring/HandleRequestDefinitionParser.html">HandleRequestDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/HandleRequestMessageProcessor.html">HandleRequestMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">HandleRequestMessageProcessor invokes the <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html#handleRequest(java.lang.Object, java.util.Map<java.lang.String, java.lang.Object>)">handleRequest(java.lang.Object, java.util.Map)</a></code> method in <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/processors/HandleRequestMessageProcessor.html">HandleRequestMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">HandleRequestMessageProcessor invokes the <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html#handleRequest(java.lang.Object, java.util.Map<java.lang.String, java.lang.Object>)">handleRequest(java.lang.Object, java.util.Map)</a></code> method in <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code>.&nbsp;</td>
         </tr>
     
@@ -330,8 +370,20 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/adapters/HubModuleCapabilitiesAdapter.html">HubModuleCapabilitiesAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>HubModuleCapabilitiesAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/HubModuleCapabilitiesAdapter.html">HubModuleCapabilitiesAdapter</a></td>
             <td class="jd-descrcol" width="100%">A <code>HubModuleCapabilitiesAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/HubModuleConfigDefinitionParser.html">HubModuleConfigDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
@@ -342,8 +394,20 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/adapters/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>HubModuleLifecycleAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></td>
             <td class="jd-descrcol" width="100%">A <code>HubModuleLifecycleAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/pubsubhubbub/config/HubModuleNamespaceHandler.html">HubModuleNamespaceHandler</a></td>
+            <td class="jd-descrcol" width="100%">Registers bean definitions parsers for handling elements in <code>http://www.mulesoft.org/schema/mule/pubsubhubbub</code>.&nbsp;</td>
         </tr>
     
     
