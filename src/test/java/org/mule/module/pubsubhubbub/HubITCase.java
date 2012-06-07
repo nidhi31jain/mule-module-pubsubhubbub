@@ -10,6 +10,10 @@
 
 package org.mule.module.pubsubhubbub;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.StringReader;
 import java.net.URI;
 import java.util.Arrays;
@@ -22,24 +26,27 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.mule.api.MuleException;
+import org.junit.Rule;
+import org.junit.Test;
+import org.mule.DefaultMuleMessage;
 import org.mule.api.MuleMessage;
-import org.mule.module.client.MuleClient;
 import org.mule.module.pubsubhubbub.data.DataStore;
 import org.mule.module.pubsubhubbub.data.TopicSubscription;
-import org.mule.tck.DynamicPortTestCase;
 import org.mule.tck.functional.CountdownCallback;
 import org.mule.tck.functional.FunctionalTestComponent;
+import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.http.HttpConstants;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 
-public class HubITCase extends DynamicPortTestCase
+public class HubITCase extends FunctionalTestCase
 {
     private enum Action
     {
@@ -73,11 +80,18 @@ public class HubITCase extends DynamicPortTestCase
         }
     }
 
+    @Rule
+    public DynamicPort hubPort = new DynamicPort("port1");
+    @Rule
+    public DynamicPort subscriberPort = new DynamicPort("port2");
+    @Rule
+    public DynamicPort publisherPort = new DynamicPort("port3");
+
     private static final String TEST_TOPIC = "http://mulesoft.org/fake-topic";
     private static final String DEFAULT_CALLBACK_QUERY = "";
     private static final Map<String, List<String>> DEFAULT_SUBSCRIPTION_PARAMS = Collections.emptyMap();
 
-    private MuleClient muleClient;
+    private HttpClient httpClient;
     private DataStore dataStore;
 
     private FunctionalTestComponent successfullSubscriberFTC;
@@ -87,13 +101,20 @@ public class HubITCase extends DynamicPortTestCase
     private CountdownCallback publisherCC;
 
     @Override
+    protected String getConfigResources()
+    {
+        return "push-tests-config.xml";
+    }
+
+    @Override
     protected void doSetUp() throws Exception
     {
         super.doSetUp();
         dataStore = muleContext.getRegistry().lookupObject(HubModule.class).getDataStore();
-        muleClient = new MuleClient(muleContext);
         setupSuccessfullSubscriberFTC(1);
         setupPublisherFTC(1);
+
+        httpClient = new HttpClient();
     }
 
     private void setupSuccessfullSubscriberFTC(final int messagesExpected) throws Exception
@@ -110,18 +131,7 @@ public class HubITCase extends DynamicPortTestCase
         publisherFTC.setEventCallback(publisherCC);
     }
 
-    @Override
-    protected int getNumPortsToFind()
-    {
-        return 3;
-    }
-
-    @Override
-    protected String getConfigResources()
-    {
-        return "push-tests-config.xml";
-    }
-
+    @Test
     public void testBadContentType() throws Exception
     {
         final Map<String, List<String>> subscriptionRequest = new HashMap<String, List<String>>();
@@ -132,6 +142,7 @@ public class HubITCase extends DynamicPortTestCase
         assertEquals("Content type must be: application/x-www-form-urlencoded", response.getPayloadAsString());
     }
 
+    @Test
     public void testUnknownHubMode() throws Exception
     {
         final Map<String, String> subscriptionRequest = new HashMap<String, String>();
@@ -142,6 +153,7 @@ public class HubITCase extends DynamicPortTestCase
         assertEquals("Unsupported hub mode: foo", response.getPayloadAsString());
     }
 
+    @Test
     public void testWrongMultivaluedRequest() throws Exception
     {
         final Map<String, List<String>> subscriptionRequest = new HashMap<String, List<String>>();
@@ -153,6 +165,7 @@ public class HubITCase extends DynamicPortTestCase
             "Multivalued parameters are only supported for:"));
     }
 
+    @Test
     public void testBadSubscriptionRequest() throws Exception
     {
         final Map<String, String> subscriptionRequest = new HashMap<String, String>();
@@ -164,6 +177,7 @@ public class HubITCase extends DynamicPortTestCase
         assertEquals("Missing mandatory parameter: hub.callback", response.getPayloadAsString());
     }
 
+    @Test
     public void testSubscriptionRequestWithTooBigASecret() throws Exception
     {
         final Map<String, String> subscriptionRequest = new HashMap<String, String>();
@@ -179,6 +193,7 @@ public class HubITCase extends DynamicPortTestCase
         assertEquals("Maximum secret size is 200 bytes", response.getPayloadAsString());
     }
 
+    @Test
     public void testFailedSynchronousSubscriptionConfirmation() throws Exception
     {
         final Map<String, String> subscriptionRequest = new HashMap<String, String>();
@@ -192,11 +207,13 @@ public class HubITCase extends DynamicPortTestCase
         assertEquals("500", response.getInboundProperty("http.status"));
     }
 
+    @Test
     public void testSuccessfullSynchronousSubscription() throws Exception
     {
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE);
     }
 
+    @Test
     public void testSuccessfullSynchronousSubscriptionWithVerifyToken() throws Exception
     {
         final Map<String, List<String>> extraSubscriptionParam = Collections.singletonMap("hub.verify_token",
@@ -204,11 +221,13 @@ public class HubITCase extends DynamicPortTestCase
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE, extraSubscriptionParam);
     }
 
+    @Test
     public void testSuccessfullSynchronousSubscriptionWithQueryParamInCallback() throws Exception
     {
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE, "?foo=bar");
     }
 
+    @Test
     public void testSuccessfullSynchronousSubscriptionWithSecret() throws Exception
     {
         final Map<String, List<String>> extraSubscriptionParam = Collections.singletonMap("hub.secret",
@@ -216,6 +235,7 @@ public class HubITCase extends DynamicPortTestCase
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE, extraSubscriptionParam);
     }
 
+    @Test
     public void testSuccessfullSynchronousMultiTopicsSubscription() throws Exception
     {
         final Map<String, List<String>> extraSubscriptionParam = Collections.singletonMap("hub.topic",
@@ -223,6 +243,7 @@ public class HubITCase extends DynamicPortTestCase
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE, extraSubscriptionParam);
     }
 
+    @Test
     public void testSuccessfullSynchronousResubscription() throws Exception
     {
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE);
@@ -230,6 +251,7 @@ public class HubITCase extends DynamicPortTestCase
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE);
     }
 
+    @Test
     public void testSuccessfullSynchronousUnsubscription() throws Exception
     {
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE);
@@ -237,18 +259,21 @@ public class HubITCase extends DynamicPortTestCase
         doTestSuccessfullSynchronousVerifiableAction(Action.UNSUBSCRIBE);
     }
 
+    @Test
     public void testSuccessfullAsynchronousUnsubscription() throws Exception
     {
         doTestSuccessfullVerifiableAction(Action.SUBSCRIBE, Verification.ASYNC, DEFAULT_SUBSCRIPTION_PARAMS,
             DEFAULT_CALLBACK_QUERY);
     }
 
+    @Test
     public void testSuccessfullNewContentNotificationAndContentFetch() throws Exception
     {
         final String topicUrl = "http://localhost:" + getPublisherPort() + "/feeds/mouth/rss";
         doTestSuccessfullNewContentNotificationAndContentFetch(topicUrl);
     }
 
+    @Test
     public void testSuccessfullNewMultiContentNotificationAndContentFetch() throws Exception
     {
         setupPublisherFTC(2);
@@ -275,6 +300,7 @@ public class HubITCase extends DynamicPortTestCase
         }
     }
 
+    @Test
     public void testSuccessfullContentDistribution() throws Exception
     {
         final String topicUrl = "http://localhost:" + getPublisherPort() + "/feeds/mouth/rss";
@@ -460,7 +486,7 @@ public class HubITCase extends DynamicPortTestCase
     }
 
     private void doTestSuccessfullNewContentNotificationAndContentFetch(final String topicUrl)
-        throws MuleException, InterruptedException
+        throws Exception
     {
         final Map<String, String> subscriptionRequest = new HashMap<String, String>();
         subscriptionRequest.put("hub.mode", "publish");
@@ -474,7 +500,7 @@ public class HubITCase extends DynamicPortTestCase
     }
 
     private MuleMessage wrapAndSendRequestToHub(final Map<String, String> subscriptionRequest)
-        throws MuleException
+        throws Exception
     {
         final Map<String, List<String>> wrappedRequest = new HashMap<String, List<String>>();
         for (final Entry<String, String> param : subscriptionRequest.entrySet())
@@ -485,13 +511,13 @@ public class HubITCase extends DynamicPortTestCase
     }
 
     private MuleMessage sendRequestToHub(final Map<String, List<String>> subscriptionRequest)
-        throws MuleException
+        throws Exception
     {
         return sendRequestToHub(subscriptionRequest, "application/x-www-form-urlencoded");
     }
 
     private MuleMessage sendRequestToHub(final Map<String, List<String>> subscriptionRequest,
-                                         final String contentType) throws MuleException
+                                         final String contentType) throws Exception
     {
         final String hubUrl = "http://localhost:" + getHubPort() + "/hub";
 
@@ -504,22 +530,26 @@ public class HubITCase extends DynamicPortTestCase
                 postMethod.addParameter(param.getKey(), value);
             }
         }
-        final MuleMessage response = muleClient.send(hubUrl, postMethod, null);
+
+        final Integer responseStatus = httpClient.executeMethod(postMethod);
+        final MuleMessage response = new DefaultMuleMessage(postMethod.getResponseBodyAsString(),
+            Collections.singletonMap("http.status", (Object) responseStatus.toString()), null, null,
+            muleContext);
         return response;
     }
 
-    private Integer getHubPort()
+    private int getHubPort()
     {
-        return getPorts().get(0);
+        return hubPort.getNumber();
     }
 
-    private Integer getSubscriberCallbacksPort()
+    private int getSubscriberCallbacksPort()
     {
-        return getPorts().get(1);
+        return subscriberPort.getNumber();
     }
 
-    private Integer getPublisherPort()
+    private int getPublisherPort()
     {
-        return getPorts().get(2);
+        return publisherPort.getNumber();
     }
 }
