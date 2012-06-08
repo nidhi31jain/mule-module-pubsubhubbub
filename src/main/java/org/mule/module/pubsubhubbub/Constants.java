@@ -37,23 +37,16 @@ public class Constants
     // Common Parameters
     public static final String REQUEST_ENCODING_PARAM = "request.encoding";
 
-    // Mandatory
+    // PuSH Parameters
     public static final String HUB_MODE_PARAM = "hub.mode";
-
-    // Subscription Parameters
     public static final String HUB_DEFAULT_LEASE_SECONDS_PARAM = "hub.default_lease_seconds";
-    // Mandatory
     public static final String HUB_VERIFY_PARAM = "hub.verify";
     public static final String HUB_TOPIC_PARAM = "hub.topic";
     public static final String HUB_CALLBACK_PARAM = "hub.callback";
     public static final String HUB_CHALLENGE_PARAM = "hub.challenge";
-    // Optional
     public static final String HUB_LEASE_SECONDS_PARAM = "hub.lease_seconds";
     public static final String HUB_SECRET_PARAM = "hub.secret";
     public static final String HUB_VERIFY_TOKEN_PARAM = "hub.verify_token";
-
-    // Publisher Parameters
-    // Mandatory
     public static final String HUB_URL_PARAM = "hub.url";
 
     public static final Set<String> SUPPORTED_MULTIVALUED_PARAMS = new HashSet<String>(Arrays.asList(

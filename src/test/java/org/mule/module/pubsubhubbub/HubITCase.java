@@ -110,7 +110,7 @@ public class HubITCase extends FunctionalTestCase
     protected void doSetUp() throws Exception
     {
         super.doSetUp();
-        dataStore = muleContext.getRegistry().lookupObject(HubModule.class).getDataStore();
+        dataStore = muleContext.getRegistry().lookupObject(PuSHModule.class).getDataStore();
         setupSuccessfullSubscriberFTC(1);
         setupPublisherFTC(1);
 
