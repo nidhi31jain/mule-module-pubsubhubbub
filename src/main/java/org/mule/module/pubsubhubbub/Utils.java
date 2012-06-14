@@ -30,6 +30,16 @@ public abstract class Utils
         throw new UnsupportedOperationException("do not instantiate");
     }
 
+    public static void appendToQuery(final String name, final String value, final StringBuilder queryBuilder)
+    {
+        if (queryBuilder.length() != 0)
+        {
+            queryBuilder.append("&");
+        }
+    
+        queryBuilder.append(name).append("=").append(value);
+    }
+
     public static String getFirstValue(final Map<String, List<String>> parameters, final String key)
     {
         final List<String> values = parameters.get(key);

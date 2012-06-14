@@ -42,7 +42,6 @@ public abstract class AbstractVerifiableRequest implements Serializable
     private final String verificationToken;
 
     public AbstractVerifiableRequest(final Map<String, List<String>> formParams)
-
     {
         callbackUrl = Utils.getMandatoryUrlParameter(Constants.HUB_CALLBACK_PARAM, formParams);
         topicUrls = Utils.getMandatoryUrlParameters(Constants.HUB_TOPIC_PARAM, formParams);
@@ -124,8 +123,8 @@ public abstract class AbstractVerifiableRequest implements Serializable
 
     private long retrieveLeaseSeconds(final Map<String, List<String>> formParams)
     {
-        final String leaseSecondString = Utils.getFirstValue(formParams,
-            Constants.HUB_LEASE_SECONDS_PARAM, Constants.HUB_DEFAULT_LEASE_SECONDS_PARAM);
+        final String leaseSecondString = Utils.getFirstValue(formParams, Constants.HUB_LEASE_SECONDS_PARAM,
+            Constants.HUB_DEFAULT_LEASE_SECONDS_PARAM);
         return Long.valueOf(leaseSecondString);
     }
 

@@ -30,22 +30,22 @@ public enum VerificationType
     SYNC
     {
         @Override
-        public HubResponse verify(final AbstractVerifiableRequest request,
-                                  final AbstractHubActionHandler hubActionHandler,
-                                  final Runnable successAction)
+        public PuSHResponse verify(final AbstractVerifiableRequest request,
+                                   final AbstractHubActionHandler hubActionHandler,
+                                   final Runnable successAction)
         {
 
             attemptVerification(request, hubActionHandler.getMuleContext());
             successAction.run();
-            return HubResponse.noContent();
+            return PuSHResponse.noContent();
         }
     },
     ASYNC
     {
         @Override
-        public HubResponse verify(final AbstractVerifiableRequest request,
-                                  final AbstractHubActionHandler hubActionHandler,
-                                  final Runnable successAction)
+        public PuSHResponse verify(final AbstractVerifiableRequest request,
+                                   final AbstractHubActionHandler hubActionHandler,
+                                   final Runnable successAction)
         {
             final RetryCallback callback = new RetryCallback()
             {
@@ -72,7 +72,7 @@ public enum VerificationType
                                            + request);
             }
 
-            return HubResponse.accepted();
+            return PuSHResponse.accepted();
         }
     };
 
@@ -91,9 +91,9 @@ public enum VerificationType
         }
     }
 
-    public abstract HubResponse verify(AbstractVerifiableRequest request,
-                                       AbstractHubActionHandler hubActionHandler,
-                                       Runnable successAction);
+    public abstract PuSHResponse verify(AbstractVerifiableRequest request,
+                                        AbstractHubActionHandler hubActionHandler,
+                                        Runnable successAction);
 
     private static void attemptVerification(final AbstractVerifiableRequest request,
                                             final MuleContext muleContext)
@@ -159,34 +159,24 @@ public enum VerificationType
         final StringBuilder queryBuilder = new StringBuilder(
             StringUtils.defaultString(request.getCallbackUrl().getQuery()));
 
-        appendToQuery(Constants.HUB_MODE_PARAM, request.getMode(), queryBuilder);
+        Utils.appendToQuery(Constants.HUB_MODE_PARAM, request.getMode(), queryBuilder);
 
         for (final URI topicUrl : request.getTopicUrls())
         {
-            appendToQuery(Constants.HUB_TOPIC_PARAM, topicUrl.toString(), queryBuilder);
+            Utils.appendToQuery(Constants.HUB_TOPIC_PARAM, topicUrl.toString(), queryBuilder);
         }
 
-        appendToQuery(Constants.HUB_CHALLENGE_PARAM, verificationChallenge, queryBuilder);
-        appendToQuery(Constants.HUB_LEASE_SECONDS_PARAM, Long.toString(request.getLeaseSeconds()),
+        Utils.appendToQuery(Constants.HUB_CHALLENGE_PARAM, verificationChallenge, queryBuilder);
+        Utils.appendToQuery(Constants.HUB_LEASE_SECONDS_PARAM, Long.toString(request.getLeaseSeconds()),
             queryBuilder);
 
         if (StringUtils.isNotBlank(request.getVerificationToken()))
         {
-            appendToQuery(Constants.HUB_VERIFY_TOKEN_PARAM, request.getVerificationToken(), queryBuilder);
+            Utils.appendToQuery(Constants.HUB_VERIFY_TOKEN_PARAM, request.getVerificationToken(), queryBuilder);
         }
 
         final URI callbackUrl = request.getCallbackUrl();
         return new URI(callbackUrl.getScheme(), callbackUrl.getUserInfo(), callbackUrl.getHost(),
             callbackUrl.getPort(), callbackUrl.getPath(), queryBuilder.toString(), null);
-    }
-
-    private static void appendToQuery(final String name, final String value, final StringBuilder queryBuilder)
-    {
-        if (queryBuilder.length() != 0)
-        {
-            queryBuilder.append("&");
-        }
-
-        queryBuilder.append(name).append("=").append(value);
     }
 }

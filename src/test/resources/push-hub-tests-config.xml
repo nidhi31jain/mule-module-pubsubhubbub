@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:pubsubhubbub="http://www.mulesoft.org/schema/mule/pubsubhubbub"
+      xmlns:PuSH="http://www.mulesoft.org/schema/mule/PuSH-hub"
       xmlns:http="http://www.mulesoft.org/schema/mule/http"
       xmlns:script="http://www.mulesoft.org/schema/mule/scripting"
       xmlns:test="http://www.mulesoft.org/schema/mule/test"
@@ -10,7 +10,7 @@
       xmlns:p="http://www.springframework.org/schema/p"
       xsi:schemaLocation="
           http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-          http://www.mulesoft.org/schema/mule/pubsubhubbub http://www.mulesoft.org/schema/mule/pubsubhubbub/current/mule-pubsubhubbub.xsd
+          http://www.mulesoft.org/schema/mule/PuSH-hub http://www.mulesoft.org/schema/mule/PuSH-hub/current/mule-PuSH-hub.xsd
           http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
           http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
           http://www.mulesoft.org/schema/mule/test http://www.mulesoft.org/schema/mule/test/current/mule-test.xsd
@@ -24,9 +24,9 @@
     </spring:beans>
 
     <!-- By default, the hub will retry failed operations (like confirming a subscription) every 5 minutes and a maximum of 12 times -->
-    <pubsubhubbub:config objectStore-ref="hubObjectStore" />
+    <PuSH:config objectStore-ref="hubObjectStore" />
     <!-- 
-    <pubsubhubbub:config objectStore-ref="hubObjectStore"
+    <PuSH:config objectStore-ref="hubObjectStore"
                          retryCount="5"
                          retryFrequency="3600000"
                          defaultLeaseSeconds="86400" />
@@ -34,7 +34,7 @@
     
     <flow name="hub">
         <http:inbound-endpoint address="http://localhost:${port1}/hub" />
-        <pubsubhubbub:hub />
+        <PuSH:hub />
     </flow>
   
   <!-- Stubs -->

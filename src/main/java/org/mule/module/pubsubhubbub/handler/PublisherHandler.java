@@ -34,7 +34,7 @@ import org.mule.api.retry.RetryCallback;
 import org.mule.api.retry.RetryContext;
 import org.mule.api.retry.RetryPolicyTemplate;
 import org.mule.module.pubsubhubbub.Constants;
-import org.mule.module.pubsubhubbub.HubResponse;
+import org.mule.module.pubsubhubbub.PuSHResponse;
 import org.mule.module.pubsubhubbub.Utils;
 import org.mule.module.pubsubhubbub.data.DataStore;
 import org.mule.module.pubsubhubbub.data.TopicSubscription;
@@ -246,7 +246,7 @@ public class PublisherHandler extends AbstractHubActionHandler implements Fetche
     }
 
     @Override
-    public HubResponse handle(final Map<String, List<String>> formParams)
+    public PuSHResponse handle(final Map<String, List<String>> formParams)
     {
         final List<URI> hubUrls = Utils.getMandatoryUrlParameters(Constants.HUB_URL_PARAM, formParams);
         for (final URI hubUrl : hubUrls)
@@ -260,11 +260,11 @@ public class PublisherHandler extends AbstractHubActionHandler implements Fetche
             {
                 final String errorMessage = "Failed to schedule content fetch for: " + hubUrl;
                 getLogger().error(errorMessage, e);
-                return HubResponse.serverError(errorMessage);
+                return PuSHResponse.serverError(errorMessage);
             }
         }
 
-        return HubResponse.noContent();
+        return PuSHResponse.noContent();
     }
 
     public void fetcherEvent(final FetcherEvent event)

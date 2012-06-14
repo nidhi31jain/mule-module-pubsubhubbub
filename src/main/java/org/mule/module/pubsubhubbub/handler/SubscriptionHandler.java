@@ -15,7 +15,7 @@ import java.util.Map;
 
 import org.mule.api.MuleContext;
 import org.mule.api.retry.RetryPolicyTemplate;
-import org.mule.module.pubsubhubbub.HubResponse;
+import org.mule.module.pubsubhubbub.PuSHResponse;
 import org.mule.module.pubsubhubbub.data.DataStore;
 import org.mule.module.pubsubhubbub.data.TopicSubscription;
 import org.mule.module.pubsubhubbub.request.AbstractVerifiableRequest;
@@ -34,7 +34,7 @@ public class SubscriptionHandler extends AbstractHubActionHandler
     }
 
     @Override
-    public HubResponse handle(final Map<String, List<String>> formParams)
+    public PuSHResponse handle(final Map<String, List<String>> formParams)
     {
         final AbstractVerifiableRequest subscriptionRequest = new SubscriptionRequest(formParams);
         return subscriptionRequest.getVerificationType().verify(subscriptionRequest, this, new Runnable()

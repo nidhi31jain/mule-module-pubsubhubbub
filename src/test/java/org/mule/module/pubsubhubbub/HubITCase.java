@@ -103,14 +103,14 @@ public class HubITCase extends FunctionalTestCase
     @Override
     protected String getConfigResources()
     {
-        return "push-tests-config.xml";
+        return "push-hub-tests-config.xml";
     }
 
     @Override
     protected void doSetUp() throws Exception
     {
         super.doSetUp();
-        dataStore = muleContext.getRegistry().lookupObject(PuSHModule.class).getDataStore();
+        dataStore = muleContext.getRegistry().lookupObject(PuSHHubModule.class).getDataStore();
         setupSuccessfullSubscriberFTC(1);
         setupPublisherFTC(1);
 

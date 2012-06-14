@@ -21,8 +21,6 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
-import org.mule.api.MuleContext;
 import org.mule.api.MuleException;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
@@ -32,7 +30,6 @@ import org.mule.api.annotations.param.InboundHeaders;
 import org.mule.api.annotations.param.Optional;
 import org.mule.api.annotations.param.OutboundHeaders;
 import org.mule.api.annotations.param.Payload;
-import org.mule.api.context.MuleContextAware;
 import org.mule.api.retry.RetryPolicyTemplate;
 import org.mule.api.store.PartitionableObjectStore;
 import org.mule.module.pubsubhubbub.data.DataStore;
@@ -43,7 +40,7 @@ import org.mule.transport.http.HttpConnector;
 import org.mule.transport.http.HttpConstants;
 
 /**
- * Allows Mule to act as a PubSubHubbub (aka PuSH) hub and subscriber.<br/>
+ * Allows Mule to act as a PubSubHubbub (aka PuSH) hub.<br/>
  * Pubsubhubbub is a simple, open, web-hook-based pubsub protocol & open source reference implementation. <br/>
  * This module implements the <a
  * href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html">PubSubHubbub Core 0.3 -- Working Draft
@@ -53,11 +50,9 @@ import org.mule.transport.http.HttpConstants;
  * 
  * @author MuleSoft, Inc.
  */
-@Module(name = "pubsubhubbub", schemaVersion = "3.3")
-public class PuSHModule implements MuleContextAware
+@Module(name = "PuSH-hub", schemaVersion = "3.3")
+public class PuSHHubModule extends AbstractPuSHModule
 {
-    private MuleContext muleContext;
-
     private DataStore dataStore;
 
     private Map<HubMode, AbstractHubActionHandler> requestHandlers;
@@ -104,7 +99,8 @@ public class PuSHModule implements MuleContextAware
         requestHandlers = new HashMap<HubMode, AbstractHubActionHandler>();
         for (final HubMode hubMode : HubMode.values())
         {
-            requestHandlers.put(hubMode, hubMode.newHandler(muleContext, dataStore, hubRetryPolicyTemplate));
+            requestHandlers.put(hubMode,
+                hubMode.newHandler(getMuleContext(), dataStore, hubRetryPolicyTemplate));
         }
     }
 
@@ -127,93 +123,32 @@ public class PuSHModule implements MuleContextAware
                                    @OutboundHeaders final Map<String, Object> responseHeaders,
                                    @Payload final String payload) throws MuleException, DecoderException
     {
-        return handleRequest(
-            httpMethod,
-            contentType,
-            responseHeaders,
-            payload,
-            Collections.singletonMap(Constants.HUB_DEFAULT_LEASE_SECONDS_PARAM,
-                Long.toString(defaultLeaseSeconds)));
-    }
-
-    /**
-     * Handle all subscriber requests.
-     * <p/>
-     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample pubsubhubbub:handleRequest}
-     * 
-     * @param payload the message payload
-     * @param httpMethod the HTTP method name
-     * @param contentType the content-type of the request
-     * @param responseHeaders the outbound/response headers
-     * @param hubUrl the URL of the PubSubHubbub to connect to
-     * @param callbackUrl the URL that the hub should call back, which is the public URL of the HTTP inbound endpoint
-     *            placed before this element
-     * @param topic The topic URL that the subscriber wishes to subscribe to.
-     * @param leaseSeconds (Optional) Number of seconds for which the subscriber would like to have the subscription
-     *            active.
-     * @param secret (Optional) A subscriber-provided secret string that will be used to compute an HMAC digest for
-     *            authorized content distribution.
-     * @return the response body
-     * @throws MuleException
-     * @throws DecoderException
-     */
-    @Processor(name = "subscribe")
-    public String handleSubscriberRequest(@InboundHeaders(HttpConnector.HTTP_METHOD_PROPERTY) final String httpMethod,
-                                          @InboundHeaders(HttpConstants.HEADER_CONTENT_TYPE) final String contentType,
-                                          @OutboundHeaders final Map<String, Object> responseHeaders,
-                                          @Payload final String payload,
-                                          final String hubUrl,
-                                          final String callbackUrl,
-                                          final String topic,
-                                          @Optional final Long leaseSeconds,
-                                          @Optional final String secret)
-        throws MuleException, DecoderException
-    {
-        Validate.notEmpty(hubUrl, "hubUrl can't be empty");
-        Validate.notEmpty(callbackUrl, "callbackUrl can't be empty");
-        Validate.notEmpty(topic, "topic can't be empty");
-
-        // TODO send subscription message
-
-        // TODO handle incoming requests
-        // if POST application/atom+xml application/rss+xml -> content delivery
-        // if GET Hub Verifies Intent of the Subscriber -> handle
-
-        throw new UnsupportedOperationException();
-    }
-
-    private String handleRequest(final String httpMethod,
-                                 final String contentType,
-                                 final Map<String, Object> responseHeaders,
-                                 final String payload,
-                                 final Map<String, String> extraParameters)
-        throws MuleException, DecoderException
-    {
-        HubResponse response = null;
         if (!StringUtils.equalsIgnoreCase(httpMethod, HttpConstants.METHOD_POST))
         {
-            response = HubResponse.badRequest("HTTP method must be: POST");
+            return respond(responseHeaders, PuSHResponse.badRequest("HTTP method must be: POST"));
         }
 
         if (!StringUtils.startsWith(contentType, Constants.WWW_FORM_URLENCODED_CONTENT_TYPE))
         {
-            response = HubResponse.badRequest("Content type must be: application/x-www-form-urlencoded");
+            return respond(
+                responseHeaders,
+                PuSHResponse.badRequest("Content type must be: " + Constants.WWW_FORM_URLENCODED_CONTENT_TYPE));
         }
 
-        if (response == null)
-        {
-            // FIXME get encoding from current message:
-            // @Expr(value = "#[message:encoding]") final String encoding,
-            response = handleRequest(payload, "UTF-8", extraParameters);
-        }
-
-        responseHeaders.put(HttpConnector.HTTP_STATUS_PROPERTY, response.getStatus());
-        return response.getBody();
+        // TODO get encoding from current message:
+        // @Expr(value = "#[message:encoding]") final String encoding,
+        return respond(
+            responseHeaders,
+            handleRequest(
+                payload,
+                "UTF-8",
+                Collections.singletonMap(Constants.HUB_DEFAULT_LEASE_SECONDS_PARAM,
+                    Long.toString(defaultLeaseSeconds))));
     }
 
-    private HubResponse handleRequest(final String payload,
-                                      final String encoding,
-                                      final Map<String, String> extraParameters)
+    private PuSHResponse handleRequest(final String payload,
+                                       final String encoding,
+                                       final Map<String, String> extraParameters)
         throws MuleException, DecoderException
     {
         final Map<String, List<String>> parameters = Utils.getHttpPostParameters(payload, encoding);
@@ -223,8 +158,8 @@ public class PuSHModule implements MuleContextAware
             if ((param.getValue().size() > 1)
                 && (!Constants.SUPPORTED_MULTIVALUED_PARAMS.contains(param.getKey())))
             {
-                return HubResponse.badRequest("Multivalued parameters are only supported for: "
-                                              + StringUtils.join(Constants.SUPPORTED_MULTIVALUED_PARAMS, ','));
+                return PuSHResponse.badRequest("Multivalued parameters are only supported for: "
+                                               + StringUtils.join(Constants.SUPPORTED_MULTIVALUED_PARAMS, ','));
             }
         }
 
@@ -241,26 +176,16 @@ public class PuSHModule implements MuleContextAware
         }
         catch (final IllegalArgumentException exception)
         {
-            return HubResponse.badRequest(exception.getMessage());
+            return PuSHResponse.badRequest(exception.getMessage());
         }
     }
 
-    private HubResponse handleRequest(final Map<String, List<String>> parameters)
+    private PuSHResponse handleRequest(final Map<String, List<String>> parameters)
     {
         final HubMode hubMode = HubMode.parse(Utils.getMandatoryStringParameter(Constants.HUB_MODE_PARAM,
             parameters));
 
         return requestHandlers.get(hubMode).handle(parameters);
-    }
-
-    public void setMuleContext(final MuleContext muleContext)
-    {
-        this.muleContext = muleContext;
-    }
-
-    public MuleContext getMuleContext()
-    {
-        return muleContext;
     }
 
     public void setObjectStore(final PartitionableObjectStore<Serializable> objectStore)
@@ -307,5 +232,4 @@ public class PuSHModule implements MuleContextAware
     {
         return dataStore;
     }
-
 }

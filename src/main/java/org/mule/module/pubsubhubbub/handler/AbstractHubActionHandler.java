@@ -18,7 +18,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mule.api.MuleContext;
 import org.mule.api.retry.RetryPolicyTemplate;
-import org.mule.module.pubsubhubbub.HubResponse;
+import org.mule.module.pubsubhubbub.PuSHResponse;
 import org.mule.module.pubsubhubbub.data.DataStore;
 
 /**
@@ -47,7 +47,7 @@ public abstract class AbstractHubActionHandler
         this.retryPolicyTemplate = retryPolicyTemplate;
     }
 
-    public abstract HubResponse handle(final Map<String, List<String>> formParams);
+    public abstract PuSHResponse handle(final Map<String, List<String>> formParams);
 
     public MuleContext getMuleContext()
     {
