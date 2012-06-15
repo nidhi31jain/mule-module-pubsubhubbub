@@ -14,17 +14,15 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Set;
 
 import org.junit.Test;
 import org.mule.module.pubsubhubbub.data.TopicSubscription;
-import org.mule.tck.functional.CountdownCallback;
-import org.mule.tck.functional.FunctionalTestComponent;
 
 public class SubscriberTestCase extends AbstractPuSHTestCase
 {
-    private FunctionalTestComponent subscriberFTC;
-    private CountdownCallback subscriberCC;
+    private static final String SUBSCRIBER_FLOW_NAME = "subscriber";
 
     @Override
     protected String getConfigResources()
@@ -35,22 +33,29 @@ public class SubscriberTestCase extends AbstractPuSHTestCase
     @Override
     protected void doSetUp() throws Exception
     {
-        setupSubscriberFTC(0);
+        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 0);
         super.doSetUp();
-    }
-
-    private void setupSubscriberFTC(final int messagesExpected) throws Exception
-    {
-        subscriberFTC = getFunctionalTestComponent("subscriber");
-        subscriberCC = new CountdownCallback(messagesExpected);
-        subscriberFTC.setEventCallback(subscriberCC);
     }
 
     @Test
     public void testSubscribed() throws Exception
     {
-        final Set<TopicSubscription> stored = ponderUntilSubscriptionStored(new URI(TEST_TOPIC));
-        assertThat(stored.size(), is(1));
+        ensureSubscribed();
         assertThat(subscriberFTC.getReceivedMessagesCount(), is(0));
+    }
+
+    @Test
+    public void testContentDistribution() throws Exception
+    {
+        ensureSubscribed();
+        setupPublisherFTC(1);
+        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 1);
+        doTestSuccessfulContentDistribution(getTestTopics().get(0));
+    }
+
+    protected void ensureSubscribed() throws InterruptedException, URISyntaxException
+    {
+        final Set<TopicSubscription> stored = ponderUntilSubscriptionStored(new URI(getTestTopics().get(0)));
+        assertThat(stored.size(), is(1));
     }
 }

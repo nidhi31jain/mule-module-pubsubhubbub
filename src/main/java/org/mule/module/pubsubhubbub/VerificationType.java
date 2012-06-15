@@ -172,7 +172,8 @@ public enum VerificationType
 
         if (StringUtils.isNotBlank(request.getVerificationToken()))
         {
-            Utils.appendToQuery(Constants.HUB_VERIFY_TOKEN_PARAM, request.getVerificationToken(), queryBuilder);
+            Utils.appendToQuery(Constants.HUB_VERIFY_TOKEN_PARAM, request.getVerificationToken(),
+                queryBuilder);
         }
 
         final URI callbackUrl = request.getCallbackUrl();

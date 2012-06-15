@@ -36,7 +36,7 @@ public abstract class Utils
         {
             queryBuilder.append("&");
         }
-    
+
         queryBuilder.append(name).append("=").append(value);
     }
 

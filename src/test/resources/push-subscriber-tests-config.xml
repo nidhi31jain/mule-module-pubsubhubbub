@@ -16,7 +16,7 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <PuSH-sub:config name="sub-config" hubUrl="http://localhost:${port1}/hub"
-        callbackUrl="http://localhost:${port2}/subscriber" topic="http://mulesoft.org/fake-topic" />
+        callbackUrl="http://localhost:${port2}/subscriber" topic="http://localhost:${port3}/feeds/mouth/rss" />
 
     <flow name="subscriber">
         <http:inbound-endpoint address="http://localhost:${port2}/subscriber"

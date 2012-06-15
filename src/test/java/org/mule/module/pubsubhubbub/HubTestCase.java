@@ -14,7 +14,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.StringReader;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,22 +25,16 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.junit.Test;
-import org.mule.DefaultMuleMessage;
 import org.mule.api.MuleMessage;
-import org.mule.tck.functional.CountdownCallback;
-import org.mule.tck.functional.FunctionalTestComponent;
-import org.mule.transport.http.HttpConstants;
-
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
 
 public class HubTestCase extends AbstractPuSHTestCase
 {
+    private static final String SUBSCRIBER_FLOW_NAME = "successfullSubscriberCallback";
+
     private enum Action
     {
         SUBSCRIBE, UNSUBSCRIBE;
@@ -77,12 +70,6 @@ public class HubTestCase extends AbstractPuSHTestCase
     private static final String DEFAULT_CALLBACK_QUERY = "";
     private static final Map<String, List<String>> DEFAULT_SUBSCRIPTION_PARAMS = Collections.emptyMap();
 
-    private FunctionalTestComponent successfullSubscriberFTC;
-    private CountdownCallback successfullSubscriberCC;
-
-    private FunctionalTestComponent publisherFTC;
-    private CountdownCallback publisherCC;
-
     @Override
     protected String getConfigResources()
     {
@@ -93,22 +80,8 @@ public class HubTestCase extends AbstractPuSHTestCase
     protected void doSetUp() throws Exception
     {
         super.doSetUp();
-        setupSuccessfullSubscriberFTC(1);
+        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 1);
         setupPublisherFTC(1);
-    }
-
-    private void setupSuccessfullSubscriberFTC(final int messagesExpected) throws Exception
-    {
-        successfullSubscriberFTC = getFunctionalTestComponent("successfullSubscriberCallback");
-        successfullSubscriberCC = new CountdownCallback(messagesExpected);
-        successfullSubscriberFTC.setEventCallback(successfullSubscriberCC);
-    }
-
-    private void setupPublisherFTC(final int messagesExpected) throws Exception
-    {
-        publisherFTC = getFunctionalTestComponent("publisher");
-        publisherCC = new CountdownCallback(messagesExpected);
-        publisherFTC.setEventCallback(publisherCC);
     }
 
     @Test
@@ -227,7 +200,7 @@ public class HubTestCase extends AbstractPuSHTestCase
     public void testSuccessfullSynchronousResubscription() throws Exception
     {
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE);
-        setupSuccessfullSubscriberFTC(1);
+        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 1);
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE);
     }
 
@@ -235,7 +208,7 @@ public class HubTestCase extends AbstractPuSHTestCase
     public void testSuccessfullSynchronousUnsubscription() throws Exception
     {
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE);
-        setupSuccessfullSubscriberFTC(1);
+        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 1);
         doTestSuccessfullSynchronousVerifiableAction(Action.UNSUBSCRIBE);
     }
 
@@ -283,22 +256,17 @@ public class HubTestCase extends AbstractPuSHTestCase
     @Test
     public void testSuccessfullContentDistribution() throws Exception
     {
-        final String topicUrl = "http://localhost:" + getPublisherPort() + "/feeds/mouth/rss";
+        final String topicUrl = getTestTopics().get(0);
         final Map<String, List<String>> extraSubscriptionParam = Collections.singletonMap("hub.topic",
             Collections.singletonList(topicUrl));
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE, extraSubscriptionParam);
 
         // reset the callback FTC latch
-        setupSuccessfullSubscriberFTC(1);
+        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 1);
 
-        doTestSuccessfullNewContentNotificationAndContentFetch(topicUrl);
+        doTestSuccessfulContentDistribution(topicUrl);
 
-        // check RSS content has been pushed to callback FTC
-        successfullSubscriberCC.await(TimeUnit.SECONDS.toMillis(getTestTimeoutSecs()));
-        final SyndFeed syndFeed = new SyndFeedInput(true).build(new StringReader(
-            (String) successfullSubscriberFTC.getLastReceivedMessage()));
-        assertEquals("rss_2.0", syndFeed.getFeedType());
-
+        // the stub subscriber gives a on-behalf header
         assertEquals(123, dataStore.getTotalSubscriberCount(new URI(topicUrl)));
     }
 
@@ -365,9 +333,9 @@ public class HubTestCase extends AbstractPuSHTestCase
                                           final Map<String, List<String>> subscriptionRequest)
         throws Exception
     {
-        successfullSubscriberCC.await(TimeUnit.SECONDS.toMillis(getTestTimeoutSecs()));
+        subscriberCC.await(TimeUnit.SECONDS.toMillis(getTestTimeoutSecs()));
 
-        final Map<String, List<String>> subscriberVerifyParams = TestUtils.getUrlParameters(successfullSubscriberFTC.getLastReceivedMessage()
+        final Map<String, List<String>> subscriberVerifyParams = TestUtils.getUrlParameters(subscriberFTC.getLastReceivedMessage()
             .toString());
 
         assertEquals(subscriptionRequest.get("hub.mode").get(0), subscriberVerifyParams.get("hub.mode")
@@ -406,58 +374,5 @@ public class HubTestCase extends AbstractPuSHTestCase
         {
             assertNull(subscriberVerifyParams.get("foo"));
         }
-    }
-
-    private void doTestSuccessfullNewContentNotificationAndContentFetch(final String topicUrl)
-        throws Exception
-    {
-        final Map<String, String> subscriptionRequest = new HashMap<String, String>();
-        subscriptionRequest.put("hub.mode", "publish");
-        subscriptionRequest.put("hub.url", topicUrl);
-
-        final MuleMessage response = wrapAndSendRequestToHub(subscriptionRequest);
-        assertEquals("204", response.getInboundProperty("http.status"));
-
-        publisherCC.await(TimeUnit.SECONDS.toMillis(getTestTimeoutSecs()));
-        assertEquals("/feeds/mouth/rss", publisherFTC.getLastReceivedMessage());
-    }
-
-    private MuleMessage wrapAndSendRequestToHub(final Map<String, String> subscriptionRequest)
-        throws Exception
-    {
-        final Map<String, List<String>> wrappedRequest = new HashMap<String, List<String>>();
-        for (final Entry<String, String> param : subscriptionRequest.entrySet())
-        {
-            wrappedRequest.put(param.getKey(), Collections.singletonList(param.getValue()));
-        }
-        return sendRequestToHub(wrappedRequest);
-    }
-
-    private MuleMessage sendRequestToHub(final Map<String, List<String>> subscriptionRequest)
-        throws Exception
-    {
-        return sendRequestToHub(subscriptionRequest, "application/x-www-form-urlencoded");
-    }
-
-    private MuleMessage sendRequestToHub(final Map<String, List<String>> subscriptionRequest,
-                                         final String contentType) throws Exception
-    {
-        final String hubUrl = "http://localhost:" + getHubPort() + "/hub";
-
-        final PostMethod postMethod = new PostMethod(hubUrl);
-        postMethod.setRequestHeader(HttpConstants.HEADER_CONTENT_TYPE, contentType);
-        for (final Entry<String, List<String>> param : subscriptionRequest.entrySet())
-        {
-            for (final String value : param.getValue())
-            {
-                postMethod.addParameter(param.getKey(), value);
-            }
-        }
-
-        final Integer responseStatus = httpClient.executeMethod(postMethod);
-        final MuleMessage response = new DefaultMuleMessage(postMethod.getResponseBodyAsString(),
-            Collections.singletonMap("http.status", (Object) responseStatus.toString()), null, null,
-            muleContext);
-        return response;
     }
 }
