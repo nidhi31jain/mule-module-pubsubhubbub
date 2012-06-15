@@ -37,7 +37,7 @@
         <PuSH:hub />
     </flow>
   
-  <!-- Stubs -->
+    <!-- Stubs -->
     <flow name="failedSubscriberCallback">
         <http:inbound-endpoint address="http://localhost:${port2}/cb-failure" />
         <test:component throwException="true" />

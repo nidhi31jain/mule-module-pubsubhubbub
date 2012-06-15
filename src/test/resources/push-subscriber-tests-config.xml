@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:PuSH-hub="http://www.mulesoft.org/schema/mule/PuSH-hub"
+    xmlns:PuSH-sub="http://www.mulesoft.org/schema/mule/PuSH-subscriber"
+    xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:script="http://www.mulesoft.org/schema/mule/scripting"
+    xmlns:test="http://www.mulesoft.org/schema/mule/test" xmlns:spring="http://www.springframework.org/schema/beans"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+          http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+          http://www.mulesoft.org/schema/mule/PuSH-hub http://www.mulesoft.org/schema/mule/PuSH-hub/current/mule-PuSH-hub.xsd
+          http://www.mulesoft.org/schema/mule/PuSH-subscriber http://www.mulesoft.org/schema/mule/PuSH-subscriber/current/mule-PuSH-subscriber.xsd
+          http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+          http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+          http://www.mulesoft.org/schema/mule/test http://www.mulesoft.org/schema/mule/test/current/mule-test.xsd
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <PuSH-sub:config name="sub-config" hubUrl="http://localhost:${port1}/hub"
+        callbackUrl="http://localhost:${port2}/subscriber" topic="http://mulesoft.org/fake-topic" />
+
+    <flow name="subscriber">
+        <http:inbound-endpoint address="http://localhost:${port2}/subscriber"
+            exchange-pattern="request-response" />
+        <PuSH-sub:subscriber />
+        <test:component />
+    </flow>
+  
+   <!-- Stubs -->
+    <spring:beans>
+        <spring:bean id="hubObjectStore"
+            class="org.mule.util.store.PartitionedInMemoryObjectStore" />
+    </spring:beans>
+
+    <PuSH-hub:config objectStore-ref="hubObjectStore" />
+
+    <flow name="hub">
+        <http:inbound-endpoint address="http://localhost:${port1}/hub" />
+        <PuSH-hub:hub />
+    </flow>
+
+    <flow name="publisher">
+        <composite-source>
+            <http:inbound-endpoint address="http://localhost:${port3}/feeds/mouth/rss" />
+            <http:inbound-endpoint address="http://localhost:${port3}/feeds/boca/rss" />
+        </composite-source>
+        <response>
+            <component>
+                <singleton-object class="org.mule.component.simple.StaticComponent">
+                    <property key="dataFile" value="mouth.rss" />
+                </singleton-object>
+            </component>
+            <message-properties-transformer>
+                <add-message-property key="Content-Type"
+                    value="application/rss+xml" />
+            </message-properties-transformer>
+        </response>
+        <script:transformer>
+            <script:script engine="groovy">
+            <![CDATA[
+                userAgent = message.getInboundProperty('User-Agent')
+                if (!(userAgent==~ /Mule PubSubHubbub Hub \(.+; \d+ subscribers\)/)) throw new IllegalArgumentException("Wrong user agent: ${userAgent}")
+                return message
+            ]]>
+            </script:script>
+        </script:transformer>
+        <test:component />
+    </flow>
+</mule>

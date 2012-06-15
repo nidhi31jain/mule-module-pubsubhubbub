@@ -26,27 +26,21 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.junit.Rule;
 import org.junit.Test;
 import org.mule.DefaultMuleMessage;
 import org.mule.api.MuleMessage;
-import org.mule.module.pubsubhubbub.data.DataStore;
-import org.mule.module.pubsubhubbub.data.TopicSubscription;
 import org.mule.tck.functional.CountdownCallback;
 import org.mule.tck.functional.FunctionalTestComponent;
-import org.mule.tck.junit4.FunctionalTestCase;
-import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.http.HttpConstants;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 
-public class HubITCase extends FunctionalTestCase
+public class HubTestCase extends AbstractPuSHTestCase
 {
     private enum Action
     {
@@ -80,19 +74,8 @@ public class HubITCase extends FunctionalTestCase
         }
     }
 
-    @Rule
-    public DynamicPort hubPort = new DynamicPort("port1");
-    @Rule
-    public DynamicPort subscriberPort = new DynamicPort("port2");
-    @Rule
-    public DynamicPort publisherPort = new DynamicPort("port3");
-
-    private static final String TEST_TOPIC = "http://mulesoft.org/fake-topic";
     private static final String DEFAULT_CALLBACK_QUERY = "";
     private static final Map<String, List<String>> DEFAULT_SUBSCRIPTION_PARAMS = Collections.emptyMap();
-
-    private HttpClient httpClient;
-    private DataStore dataStore;
 
     private FunctionalTestComponent successfullSubscriberFTC;
     private CountdownCallback successfullSubscriberCC;
@@ -110,11 +93,8 @@ public class HubITCase extends FunctionalTestCase
     protected void doSetUp() throws Exception
     {
         super.doSetUp();
-        dataStore = muleContext.getRegistry().lookupObject(PuSHHubModule.class).getDataStore();
         setupSuccessfullSubscriberFTC(1);
         setupPublisherFTC(1);
-
-        httpClient = new HttpClient();
     }
 
     private void setupSuccessfullSubscriberFTC(final int messagesExpected) throws Exception
@@ -428,63 +408,6 @@ public class HubITCase extends FunctionalTestCase
         }
     }
 
-    private void checkTopicSubscriptionStored(final String callback,
-                                              final Map<String, List<String>> subscriptionRequest)
-        throws Exception
-    {
-        for (final String hubTopic : subscriptionRequest.get("hub.topic"))
-        {
-            final URI hubTopicUri = new URI(hubTopic);
-            final Set<TopicSubscription> topicSubscriptions = ponderUntilSubscriptionStored(hubTopicUri);
-            assertEquals(1, topicSubscriptions.size());
-            final TopicSubscription topicSubscription = topicSubscriptions.iterator().next();
-            assertEquals(hubTopicUri, topicSubscription.getTopicUrl());
-            assertEquals(new URI(callback), topicSubscription.getCallbackUrl());
-            assertTrue(topicSubscription.getExpiryTime() > 0L);
-            final String secretAsString = subscriptionRequest.get("hub.secret") != null
-                                                                                       ? subscriptionRequest.get(
-                                                                                           "hub.secret")
-                                                                                           .get(0)
-                                                                                       : null;
-            if (StringUtils.isNotBlank(secretAsString))
-            {
-                assertTrue(Arrays.equals(secretAsString.getBytes("utf-8"), topicSubscription.getSecret()));
-            }
-            else
-            {
-                assertNull(topicSubscription.getSecret());
-            }
-        }
-    }
-
-    private void checkTopicSubscriptionCleared(final String callback,
-                                               final Map<String, List<String>> subscriptionRequest)
-        throws Exception
-    {
-        for (final String hubTopic : subscriptionRequest.get("hub.topic"))
-        {
-            final URI hubTopicUri = new URI(hubTopic);
-            final Set<TopicSubscription> topicSubscriptions = dataStore.getTopicSubscriptions(hubTopicUri);
-            assertEquals(0, topicSubscriptions.size());
-        }
-    }
-
-    private Set<TopicSubscription> ponderUntilSubscriptionStored(final URI hubTopicUri)
-        throws InterruptedException
-    {
-
-        for (int attempts = 0; attempts < 300; attempts++)
-        {
-            final Set<TopicSubscription> topicSubscriptions = dataStore.getTopicSubscriptions(hubTopicUri);
-            if (!topicSubscriptions.isEmpty())
-            {
-                return topicSubscriptions;
-            }
-            Thread.sleep(100L);
-        }
-        return Collections.emptySet();
-    }
-
     private void doTestSuccessfullNewContentNotificationAndContentFetch(final String topicUrl)
         throws Exception
     {
@@ -536,20 +459,5 @@ public class HubITCase extends FunctionalTestCase
             Collections.singletonMap("http.status", (Object) responseStatus.toString()), null, null,
             muleContext);
         return response;
-    }
-
-    private int getHubPort()
-    {
-        return hubPort.getNumber();
-    }
-
-    private int getSubscriberCallbacksPort()
-    {
-        return subscriberPort.getNumber();
-    }
-
-    private int getPublisherPort()
-    {
-        return publisherPort.getNumber();
     }
 }

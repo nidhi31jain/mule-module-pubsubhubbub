@@ -48,8 +48,6 @@ import org.mule.util.StringUtils;
 @Module(name = "PuSH-subscriber", schemaVersion = "3.3")
 public class PuSHSubscriberModule extends AbstractPuSHModule
 {
-    // TODO integration test
-
     /**
      * The URL of the PubSubHubbub to connect to.
      */
