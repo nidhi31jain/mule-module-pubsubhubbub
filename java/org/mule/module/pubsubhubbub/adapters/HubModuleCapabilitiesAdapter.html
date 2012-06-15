@@ -235,6 +235,10 @@
       <ul>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/HubModuleCapabilitiesAdapter.html">HubModuleCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html">PuSHHubModuleCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html">PuSHHubModuleLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleCapabilitiesAdapter.html">PuSHSubscriberModuleCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleLifecycleAdapter.html">PuSHSubscriberModuleLifecycleAdapter</a></li>
       </ul>
     </li>
               
@@ -279,17 +283,6 @@
 
 
   
-   
-  
-  
-  
-   
-  
-  
-
-  
-   
-  
   
   
   
@@ -321,11 +314,8 @@ Summary:
 
 
 
-  <a href="#inhfields">Inherited Fields</a>
-  
 
-
-  &#124; <a href="#pubctors">Ctors</a>
+  <a href="#pubctors">Ctors</a>
   
 
 
@@ -368,7 +358,7 @@ Summary:
   
 
   
-    extends <a href="../../../../../../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a><br/>
+    extends HubModule<br/>
   
   
   
@@ -401,7 +391,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/module/pubsubhubbub/HubModule.html">org.mule.module.pubsubhubbub.HubModule</a></td>
+        <td colspan="2" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.HubModule</td>
     </tr>
     
 
@@ -444,7 +434,7 @@ Summary:
   <table class="jd-sumtable-expando">
         <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></td>
-              <td class="jd-descrcol" width="100%">A <code>HubModuleLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">A <code>HubModuleLifecycleAdapter</code> is a wrapper around HubModule that adds lifecycle methods to the pojo.&nbsp;</td>
           </tr>
   </table>
       </div>
@@ -458,7 +448,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>A <code>HubModuleCapabilitiesAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/module/pubsubhubbub/HubModule.html">HubModule</a></code> that implements org.mule.api.Capabilities interface.
+<p>A <code>HubModuleCapabilitiesAdapter</code> is a wrapper around org.mule.module.pubsubhubbub.HubModule that implements org.mule.api.Capabilities interface.
  
 </p>
 
@@ -506,121 +496,6 @@ Summary:
 
 
 
-
-
-<!-- =========== FIELD SUMMARY =========== -->
-<table id="inhfields" class="jd-sumtable"><tr><th>
-  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
-  <div style="clear:left;">Inherited Fields</div></th></tr>
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.module.pubsubhubbub.HubModule" class="jd-expando-trigger closed"
-          ><img id="inherited-fields-org.mule.module.pubsubhubbub.HubModule-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From class
-<a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html">org.mule.module.pubsubhubbub.HubModule</a>
-<div id="inherited-fields-org.mule.module.pubsubhubbub.HubModule">
-  <div id="inherited-fields-org.mule.module.pubsubhubbub.HubModule-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-fields-org.mule.module.pubsubhubbub.HubModule-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          <a href="../../../../../../java/org/mule/module/pubsubhubbub/data/DataStore.html">DataStore</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#dataStore">dataStore</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          long</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#defaultLeaseSeconds">defaultLeaseSeconds</a></td>
-          <td class="jd-descrcol" width="100%">The default lease time in milliseconds.</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          MuleContext</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#muleContext">muleContext</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          PartitionableObjectStore&lt;Serializable&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#objectStore">objectStore</a></td>
-          <td class="jd-descrcol" width="100%">Any implementation of PartitionableObjectStore can be used as a back-end for the hub.</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Map&lt;<a href="../../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>,&nbsp;<a href="../../../../../../java/org/mule/module/pubsubhubbub/handler/AbstractHubActionHandler.html">AbstractHubActionHandler</a>&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#requestHandlers">requestHandlers</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          int</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#retryCount">retryCount</a></td>
-          <td class="jd-descrcol" width="100%">The retry count.</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          int</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#retryFrequency">retryFrequency</a></td>
-          <td class="jd-descrcol" width="100%">The retry frequency in milliseconds.</td>
-      </tr>
-      
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-
-
-
-
-
-</table>
 
 
 
@@ -693,240 +568,6 @@ Summary:
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.pubsubhubbub.HubModule" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.module.pubsubhubbub.HubModule-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From class
-
-  <a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html">org.mule.module.pubsubhubbub.HubModule</a>
-
-<div id="inherited-methods-org.mule.module.pubsubhubbub.HubModule">
-  <div id="inherited-methods-org.mule.module.pubsubhubbub.HubModule-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.module.pubsubhubbub.HubModule-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/org/mule/module/pubsubhubbub/data/DataStore.html">DataStore</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#getDataStore()">getDataStore</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            long</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#getDefaultLeaseSeconds()">getDefaultLeaseSeconds</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            MuleContext</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#getMuleContext()">getMuleContext</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            PartitionableObjectStore&lt;Serializable&gt;</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#getObjectStore()">getObjectStore</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#getRetryCount()">getRetryCount</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#getRetryFrequency()">getRetryFrequency</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#handleRequest(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)">handleRequest</a></span>(String httpMethod, String contentType, Map&lt;String,&nbsp;Object&gt; responseHeaders, String payload)</nobr>
-        
-        <div class="jd-descrdiv">Handle all hub requests.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#setDefaultLeaseSeconds(long)">setDefaultLeaseSeconds</a></span>(long defaultLeaseSeconds)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext muleContext)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#setObjectStore(org.mule.api.store.PartitionableObjectStore<java.io.Serializable>)">setObjectStore</a></span>(PartitionableObjectStore&lt;Serializable&gt; objectStore)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#setRetryCount(int)">setRetryCount</a></span>(int retryCount)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#setRetryFrequency(int)">setRetryFrequency</a></span>(int retryFrequency)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/HubModule.html#wireResources()">wireResources</a></span>()</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
 
 
 
@@ -1163,48 +804,6 @@ From interface
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">isCapableOf</span>(Capability arg0)</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.context.MuleContextAware" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.context.MuleContextAware-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.context.MuleContextAware
-
-<div id="inherited-methods-org.mule.api.context.MuleContextAware">
-  <div id="inherited-methods-org.mule.api.context.MuleContextAware-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.context.MuleContextAware-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">setMuleContext</span>(MuleContext arg0)</nobr>
         
   </td></tr>
 

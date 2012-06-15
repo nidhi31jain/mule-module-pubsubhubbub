@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  HubModuleCapabilitiesAdapter
+  PuSHHubModuleNamespaceHandler
 
 
 | Mule PubSubHubbub (aka PuSH) Module
@@ -237,12 +237,12 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HandleRequestDefinitionParser.html">HandleRequestDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HandleRequestMessageProcessor.html">HandleRequestMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HandleSubscriberRequestDefinitionParser.html">HandleSubscriberRequestDefinitionParser</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleCapabilitiesAdapter.html">HubModuleCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleCapabilitiesAdapter.html">HubModuleCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleConfigDefinitionParser.html">HubModuleConfigDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleNamespaceHandler.html">HubModuleNamespaceHandler</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHHubModuleConfigDefinitionParser.html">PuSHHubModuleConfigDefinitionParser</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHHubModuleNamespaceHandler.html">PuSHHubModuleNamespaceHandler</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHHubModuleNamespaceHandler.html">PuSHHubModuleNamespaceHandler</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHSubscriberModuleConfigDefinitionParser.html">PuSHSubscriberModuleConfigDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHSubscriberModuleNamespaceHandler.html">PuSHSubscriberModuleNamespaceHandler</a></li>
       </ul>
@@ -289,7 +289,11 @@
 
 
   
+   
   
+  
+  
+   
   
   
 
@@ -320,8 +324,11 @@ Summary:
 
 
 
+  <a href="#inhfields">Inherited Fields</a>
+  
 
-  <a href="#pubctors">Ctors</a>
+
+  &#124; <a href="#pubctors">Ctors</a>
   
 
 
@@ -355,7 +362,7 @@ Summary:
      
     
     class
-<h1>HubModuleCapabilitiesAdapter</h1>
+<h1>PuSHHubModuleNamespaceHandler</h1>
 
 
 
@@ -364,17 +371,12 @@ Summary:
   
 
   
-    extends HubModule<br/>
+    extends NamespaceHandlerSupport<br/>
   
   
   
 
   
-  
-      implements 
-      
-        Capabilities 
-      
   
   
 
@@ -397,7 +399,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="2" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.HubModule</td>
+        <td colspan="2" class="jd-inheritance-class-cell">org.springframework.beans.factory.xml.NamespaceHandlerSupport</td>
     </tr>
     
 
@@ -407,7 +409,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.config.HubModuleCapabilitiesAdapter</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.config.PuSHHubModuleNamespaceHandler</td>
     </tr>
     
 
@@ -416,37 +418,6 @@ Summary:
 
 
 
-<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
-          ><img id="subclasses-direct-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
-
-  <div id="subclasses-direct">
-      <div id="subclasses-direct-list"
-              class="jd-inheritedlinks"
-              
-              >
-          
-            
-              <a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a>
-            
-          
-      </div>
-      <div id="subclasses-direct-summary"
-              style="display: none;"
-              >
-  <table class="jd-sumtable-expando">
-        <tr class="alt-color api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></td>
-              <td class="jd-descrcol" width="100%">A <code>HubModuleLifecycleAdapter</code> is a wrapper around HubModule that adds lifecycle methods to the pojo.&nbsp;</td>
-          </tr>
-  </table>
-      </div>
-  </div>
-</td></tr></table>
-
 
 
 
@@ -454,7 +425,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>A <code>HubModuleCapabilitiesAdapter</code> is a wrapper around org.mule.module.pubsubhubbub.HubModule that implements org.mule.api.Capabilities interface.
+<p>Registers bean definitions parsers for handling elements in <code>http://www.mulesoft.org/schema/mule/PuSH-hub</code>.
  
 </p>
 
@@ -504,6 +475,75 @@ Summary:
 
 
 
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.springframework.beans.factory.xml.NamespaceHandlerSupport" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.springframework.beans.factory.xml.NamespaceHandlerSupport-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+org.springframework.beans.factory.xml.NamespaceHandlerSupport
+<div id="inherited-fields-org.springframework.beans.factory.xml.NamespaceHandlerSupport">
+  <div id="inherited-fields-org.springframework.beans.factory.xml.NamespaceHandlerSupport-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.springframework.beans.factory.xml.NamespaceHandlerSupport-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          final
+          Map&lt;String,&nbsp;BeanDefinitionDecorator&gt;</nobr></td>
+          <td class="jd-linkcol">attributeDecorators</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          final
+          Map&lt;String,&nbsp;BeanDefinitionDecorator&gt;</nobr></td>
+          <td class="jd-linkcol">decorators</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          final
+          Map&lt;String,&nbsp;BeanDefinitionParser&gt;</nobr></td>
+          <td class="jd-linkcol">parsers</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+</table>
+
+
 
 
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -522,7 +562,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/config/HubModuleCapabilitiesAdapter.html#HubModuleCapabilitiesAdapter()">HubModuleCapabilitiesAdapter</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/config/PuSHHubModuleNamespaceHandler.html#PuSHHubModuleNamespaceHandler()">PuSHHubModuleNamespaceHandler</a></span>()</nobr>
         
   </td></tr>
 
@@ -548,14 +588,12 @@ Summary:
             
             
             
-            boolean</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/config/HubModuleCapabilitiesAdapter.html#isCapableOf(org.mule.api.Capability)">isCapableOf</a></span>(Capability capability)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/config/PuSHHubModuleNamespaceHandler.html#init()">init</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Returns true if this module implements such capability
- 
-</div>
+        <div class="jd-descrdiv">Invoked by the DefaultBeanDefinitionDocumentReader after construction but before any custom elements are parsed.</div>
   
   </td></tr>
 
@@ -574,6 +612,110 @@ Summary:
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandlerSupport" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandlerSupport-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  org.springframework.beans.factory.xml.NamespaceHandlerSupport
+
+<div id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandlerSupport">
+  <div id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandlerSupport-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandlerSupport-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            BeanDefinitionHolder</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">decorate</span>(Node arg0, BeanDefinitionHolder arg1, ParserContext arg2)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            BeanDefinition</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">parse</span>(Element arg0, ParserContext arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">registerBeanDefinitionDecorator</span>(String arg0, BeanDefinitionDecorator arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">registerBeanDefinitionDecoratorForAttribute</span>(String arg0, BeanDefinitionDecorator arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">registerBeanDefinitionParser</span>(String arg0, BeanDefinitionParser arg1)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
 
 
 
@@ -781,19 +923,19 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.Capabilities" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.Capabilities-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandler" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandler-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  org.mule.api.Capabilities
+  org.springframework.beans.factory.xml.NamespaceHandler
 
-<div id="inherited-methods-org.mule.api.Capabilities">
-  <div id="inherited-methods-org.mule.api.Capabilities-list"
+<div id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandler">
+  <div id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandler-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.api.Capabilities-summary" style="display: none;">
+  <div id="inherited-methods-org.springframework.beans.factory.xml.NamespaceHandler-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -806,10 +948,42 @@ From interface
             
             
             
-            boolean</nobr>
+            BeanDefinitionHolder</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">isCapableOf</span>(Capability arg0)</nobr>
+        <span class="sympad">decorate</span>(Node arg0, BeanDefinitionHolder arg1, ParserContext arg2)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">init</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            BeanDefinition</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">parse</span>(Element arg0, ParserContext arg1)</nobr>
         
   </td></tr>
 
@@ -854,7 +1028,7 @@ From interface
 
 
 
-<A NAME="HubModuleCapabilitiesAdapter()"></A>
+<A NAME="PuSHHubModuleNamespaceHandler()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -866,7 +1040,7 @@ From interface
          
         
       </span>
-      <span class="sympad">HubModuleCapabilitiesAdapter</span>
+      <span class="sympad">PuSHHubModuleNamespaceHandler</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -900,7 +1074,7 @@ From interface
 
 
 
-<A NAME="isCapableOf(org.mule.api.Capability)"></A>
+<A NAME="init()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -910,10 +1084,10 @@ From interface
          
          
          
-        boolean
+        void
       </span>
-      <span class="sympad">isCapableOf</span>
-      <span class="normal">(Capability capability)</span>
+      <span class="sympad">init</span>
+      <span class="normal">()</span>
     </h4>
       <div class="api-level">
         <div>
@@ -925,17 +1099,11 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Returns true if this module implements such capability
- 
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Invoked by the DefaultBeanDefinitionDocumentReader after construction but before any custom elements are parsed. </p></div>
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>capability</td>
-          <td></td>
-        </tr>
-      </table>
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../../../null#registerBeanDefinitionParser(java.lang.String, org.springframework.beans.factory.xml.BeanDefinitionParser)">registerBeanDefinitionParser(String, BeanDefinitionParser)</a></code></li>
+      </ul>
   </div>
 
     </div>

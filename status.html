@@ -216,27 +216,27 @@
 <pre><code>&lt;spring:beans&gt;
     &lt;!-- Any implementation of org.mule.util.store.PartitionableObjectStore can be used as a back-end for the hub --&gt;
     &lt;spring:bean id="hubObjectStore"
-        class="org.mule.util.store.PartitionedInMemoryObjectStore" /&gt;
+                 class="org.mule.util.store.PartitionedInMemoryObjectStore" /&gt;
 &lt;/spring:beans&gt;
 
 &lt;!-- By default, the hub will retry failed operations (like confirming a subscription) every 5 minutes and a maximum of 12 times --&gt;
-&lt;pubsubhubbub:config objectStore-ref="hubObjectStore" /&gt;
+&lt;PuSH-hub:config objectStore-ref="hubObjectStore" /&gt;
 </code></pre>
 
 <p>Exposing the hub to the outside world is then trivial:</p>
 
 <pre><code>&lt;flow name="hub"&gt;
     &lt;http:inbound-endpoint address="http://localhost:8080/hub" /&gt;
-    &lt;pubsubhubbub:hub /&gt;
+    &lt;PuSH-hub:hub /&gt;
 &lt;/flow&gt;
 </code></pre>
 
 <p>If the default configuration values are not acceptable, the hub can be configured to use specific values:</p>
 
-<pre><code>&lt;pubsubhubbub:config objectStore-ref="hubObjectStore"
-                     retryCount="5"
-                     retryFrequency="3600000"
-                     defaultLeaseSeconds="86400" /&gt;
+<pre><code>&lt;PuSH-hub:config objectStore-ref="hubObjectStore"
+                 retryCount="5"
+                 retryFrequency="3600000"
+                 defaultLeaseSeconds="86400" /&gt;
 </code></pre>
 
 <h2>Implementation Status</h2>
@@ -256,6 +256,7 @@
 <p>Not Supported:</p>
 
 <ul>
+<li>Specific publisher support</li>
 <li><a href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution">Aggregated Content Distribution</a></li>
 </ul>
 

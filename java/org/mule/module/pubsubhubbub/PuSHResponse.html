@@ -71,30 +71,30 @@
 
   <meta name="description" content="Documentation for Mule PubSubHubbub (aka PuSH) Module." />
 
-<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
 <title>
 
-  HubModuleConfigDefinitionParser
+  PuSHResponse
 
 
 | Mule PubSubHubbub (aka PuSH) Module
 
 </title>
-<link href="../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
-<link href="../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
-<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
-<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
-<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
-<script src="../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
-<script src="../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
-<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
-  setToRoot("../../../../../../", "../../../../../../assets/");
+  setToRoot("../../../../../", "../../../../../assets/");
 </script>
-<script src="../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
-<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
-<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<script src="../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../assets/customizations.js" type="text/javascript"></script>
 <noscript>
   <style type="text/css">
     html,body{overflow:auto;}
@@ -137,19 +137,19 @@
     
     <ul id="header-tabs" class="">
     
-    	<li id="guide"><a href="../../../../../../guide/install.html">
+    	<li id="guide"><a href="../../../../../guide/install.html">
 	    	<span class="en">Install Guide</span>
     	</a></li>
     
-    	<li id="status"><a href="../../../../../../status.html">
+    	<li id="status"><a href="../../../../../status.html">
 	    	<span class="en">Implementation notes</span>
     	</a></li>
     
-    	<li id="java"><a href="../../../../../../java/packages.html">
+    	<li id="java"><a href="../../../../../java/packages.html">
 	    	<span class="en">Java API Reference</span>
     	</a></li>
     
-    	<li id="mule"><a href="../../../../../../mule/modules.html">
+    	<li id="mule"><a href="../../../../../mule/modules.html">
 	    	<span class="en">Mule API Reference</span>
     	</a></li>
     
@@ -157,7 +157,7 @@
     </div>
     <div id="headerRight">
       <a href="http://www.mulesoft.com" tabindex="-1">
-      <img src="../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      <img src="../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
       
   <div id="search" >
       <div id="searchForm">
@@ -171,8 +171,8 @@
                       value="search developer docs"
                       onFocus="search_focus_changed(this, true)"
                       onBlur="search_focus_changed(this, false)"
-                      onkeydown="return search_changed(event, true, '../../../../../../')"
-                      onkeyup="return search_changed(event, false, '../../../../../../')" />
+                      onkeydown="return search_changed(event, true, '../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../')" />
                   <div id="search_filtered_div" class="no-display">
                       <table id="search_filtered" cellspacing=0>
                       </table>
@@ -201,29 +201,29 @@
           <div id="resize-packages-nav">
             <div id="packages-nav">
               <div id="index-links">
-                <a href="../../../../../../java/packages.html"  >Package Index</a> |
-                <a href="../../../../../../java/classes.html" >Class Index</a>
+                <a href="../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../java/classes.html" >Class Index</a>
               </div>
               <ul>
                 
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/package-summary.html">org.mule.module.pubsubhubbub</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/package-summary.html">org.mule.module.pubsubhubbub.adapters</a></li>
     <li class="selected api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/config/package-summary.html">org.mule.module.pubsubhubbub.config</a></li>
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/package-summary.html">org.mule.module.pubsubhubbub</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/config/spring/package-summary.html">org.mule.module.pubsubhubbub.config.spring</a></li>
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/package-summary.html">org.mule.module.pubsubhubbub.adapters</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/data/package-summary.html">org.mule.module.pubsubhubbub.data</a></li>
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/config/package-summary.html">org.mule.module.pubsubhubbub.config</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/handler/package-summary.html">org.mule.module.pubsubhubbub.handler</a></li>
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/config/spring/package-summary.html">org.mule.module.pubsubhubbub.config.spring</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/processors/package-summary.html">org.mule.module.pubsubhubbub.processors</a></li>
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/data/package-summary.html">org.mule.module.pubsubhubbub.data</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/request/package-summary.html">org.mule.module.pubsubhubbub.request</a></li>
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/handler/package-summary.html">org.mule.module.pubsubhubbub.handler</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/pubsubhubbub/rome/package-summary.html">org.mule.module.pubsubhubbub.rome</a></li>
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/processors/package-summary.html">org.mule.module.pubsubhubbub.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/request/package-summary.html">org.mule.module.pubsubhubbub.request</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/pubsubhubbub/rome/package-summary.html">org.mule.module.pubsubhubbub.rome</a></li>
               </ul><br/>
             </div> <!-- end packages -->
           </div> <!-- end resize-packages -->
@@ -233,22 +233,22 @@
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HandleHubRequestDefinitionParser.html">HandleHubRequestDefinitionParser</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HandleRequestDefinitionParser.html">HandleRequestDefinitionParser</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HandleRequestMessageProcessor.html">HandleRequestMessageProcessor</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HandleSubscriberRequestDefinitionParser.html">HandleSubscriberRequestDefinitionParser</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleCapabilitiesAdapter.html">HubModuleCapabilitiesAdapter</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleConfigDefinitionParser.html">HubModuleConfigDefinitionParser</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/HubModuleNamespaceHandler.html">HubModuleNamespaceHandler</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHHubModuleConfigDefinitionParser.html">PuSHHubModuleConfigDefinitionParser</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHHubModuleNamespaceHandler.html">PuSHHubModuleNamespaceHandler</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHSubscriberModuleConfigDefinitionParser.html">PuSHSubscriberModuleConfigDefinitionParser</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/config/PuSHSubscriberModuleNamespaceHandler.html">PuSHSubscriberModuleNamespaceHandler</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/AbstractPuSHModule.html">AbstractPuSHModule</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/Constants.html">Constants</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHSubscriberModule.html">PuSHSubscriberModule</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/Utils.html">Utils</a></li>
       </ul>
     </li>
               
               
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/VerificationType.html">VerificationType</a></li>
+      </ul>
+    </li>
               
               
             </ul><br/>
@@ -256,8 +256,8 @@
         </div><!-- end nav-panels -->
         <div id="nav-tree" style="display:none">
           <div id="index-links">
-            <a href="../../../../../../packages.html"  >Package Index</a> | 
-            <a href="../../../../../../classes.html" >Class Index</a>
+            <a href="../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../classes.html" >Class Index</a>
           </div>
         </div><!-- end nav-tree -->
       </div><!-- end swapper -->
@@ -267,7 +267,7 @@
         $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
         chooseDefaultNav();
         if ($("#nav-tree").is(':visible')) {
-          init_default_navtree("../../../../../../");
+          init_default_navtree("../../../../../");
         } else {
           addLoadEvent(function() {
             scrollIntoView("packages-nav");
@@ -295,13 +295,6 @@
   
   
 
-  
-   
-  
-  
-  
-  
-
 
 <div class="sum-details-links">
 
@@ -318,9 +311,6 @@ Summary:
   
 
 
-
-  &#124; <a href="#pubctors">Ctors</a>
-  
 
 
 
@@ -353,7 +343,7 @@ Summary:
      
     
     class
-<h1>HubModuleConfigDefinitionParser</h1>
+<h1>PuSHResponse</h1>
 
 
 
@@ -364,11 +354,6 @@ Summary:
   
 
   
-  
-      implements 
-      
-        BeanDefinitionParser 
-      
   
   
 
@@ -391,7 +376,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.config.HubModuleConfigDefinitionParser</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.PuSHResponse</td>
     </tr>
     
 
@@ -458,12 +443,21 @@ Summary:
           <td class="jd-typecol"><nobr>
           private
           
+          final
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#body">body</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
           
-          TemplateParser.PatternInfo</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/config/HubModuleConfigDefinitionParser.html#patternInfo">patternInfo</a></td>
-          <td class="jd-descrcol" width="100%">Mule Pattern Info
- 
-</td>
+          final
+          int</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#status">status</a></td>
+          <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
@@ -474,31 +468,6 @@ Summary:
 
 
 
-
-
-<!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
-
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            </nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/config/HubModuleConfigDefinitionParser.html#HubModuleConfigDefinitionParser()">HubModuleConfigDefinitionParser</a></span>()</nobr>
-        
-  </td></tr>
-
-
-
-</table>
 
 
 
@@ -516,12 +485,124 @@ Summary:
             
             
             
+            static
             
-            
-            BeanDefinition</nobr>
+            <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/config/HubModuleConfigDefinitionParser.html#parse(org.w3c.dom.Element, org.springframework.beans.factory.xml.ParserContext)">parse</a></span>(Element element, ParserContext parserContent)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#accepted()">accepted</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#badRequest(java.lang.String)">badRequest</a></span>(String message)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#getBody()">getBody</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#getStatus()">getStatus</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#noContent()">noContent</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#notFound()">notFound</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#ok(java.lang.String)">ok</a></span>(String entity)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHResponse.html#serverError(java.lang.String)">serverError</a></span>(String message)</nobr>
         
   </td></tr>
 
@@ -545,7 +626,7 @@ Summary:
 <td colspan="12">
   <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
           ><img id="inherited-methods-java.lang.Object-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
+          src="../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From class
 
@@ -742,48 +823,6 @@ From class
 </td></tr>
 
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.springframework.beans.factory.xml.BeanDefinitionParser" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.springframework.beans.factory.xml.BeanDefinitionParser-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.springframework.beans.factory.xml.BeanDefinitionParser
-
-<div id="inherited-methods-org.springframework.beans.factory.xml.BeanDefinitionParser">
-  <div id="inherited-methods-org.springframework.beans.factory.xml.BeanDefinitionParser-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.springframework.beans.factory.xml.BeanDefinitionParser-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            BeanDefinition</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">parse</span>(Element arg0, ParserContext arg1)</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
 </table>
 
 
@@ -816,17 +855,17 @@ From interface
 
 
 
-<A NAME="patternInfo"></A>
+<A NAME="body"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         private 
          
-         
-        TemplateParser.PatternInfo
+        final 
+        String
       </span>
-        patternInfo
+        body
     </h4>
       <div class="api-level">
         
@@ -838,9 +877,37 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Mule Pattern Info
- 
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="status"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+        final 
+        int
+      </span>
+        status
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     
     </div>
@@ -852,24 +919,32 @@ From interface
 <!-- Public ctors -->
 
 
+
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
-<h2>Public Constructors</h2>
+<!-- Protected ctors -->
 
 
 
-<A NAME="HubModuleConfigDefinitionParser()"></A>
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="accepted()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         public 
+        static 
          
          
          
-         
-        
+        <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a>
       </span>
-      <span class="sympad">HubModuleConfigDefinitionParser</span>
+      <span class="sympad">accepted</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -888,35 +963,20 @@ From interface
 </div>
 
 
-
-
-
-<!-- ========= CONSTRUCTOR DETAIL ======== -->
-<!-- Protected ctors -->
-
-
-
-<!-- ========= METHOD DETAIL ======== -->
-<!-- Public methdos -->
-
-<h2>Public Methods</h2>
-
-
-
-<A NAME="parse(org.w3c.dom.Element, org.springframework.beans.factory.xml.ParserContext)"></A>
+<A NAME="badRequest(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         public 
+        static 
          
          
          
-         
-        BeanDefinition
+        <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a>
       </span>
-      <span class="sympad">parse</span>
-      <span class="normal">(Element element, ParserContext parserContent)</span>
+      <span class="sympad">badRequest</span>
+      <span class="normal">(String message)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -933,11 +993,211 @@ From interface
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>element</td>
+          <th>message</td>
           <td></td>
         </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getBody()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getBody</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getStatus()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getStatus</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="noContent()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a>
+      </span>
+      <span class="sympad">noContent</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="notFound()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a>
+      </span>
+      <span class="sympad">notFound</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="ok(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a>
+      </span>
+      <span class="sympad">ok</span>
+      <span class="normal">(String entity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
         <tr>
-          <th>parserContent</td>
+          <th>entity</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="serverError(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a>
+      </span>
+      <span class="sympad">serverError</span>
+      <span class="normal">(String message)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>message</td>
           <td></td>
         </tr>
       </table>

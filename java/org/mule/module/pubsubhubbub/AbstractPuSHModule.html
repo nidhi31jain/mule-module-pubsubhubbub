@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
 <title>
 
-  HubMode
+  AbstractPuSHModule
 
 
 | Mule PubSubHubbub (aka PuSH) Module
@@ -233,7 +233,7 @@
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/AbstractPuSHModule.html">AbstractPuSHModule</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/AbstractPuSHModule.html">AbstractPuSHModule</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/Constants.html">Constants</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></li>
@@ -245,7 +245,7 @@
               
     <li><h2>Enums</h2>
       <ul>
-          <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/VerificationType.html">VerificationType</a></li>
       </ul>
     </li>
@@ -293,20 +293,6 @@
   
   
   
-   
-  
-  
-
-  
-   
-  
-  
-  
-  
-
-  
-  
-  
   
 
   
@@ -325,22 +311,25 @@ Summary:
 
 
 
-  <a href="#enumconstants">Enums</a>
+
+
+
+  <a href="#lfields">Fields</a>
   
 
 
 
-
-
-  &#124; <a href="#inhfields">Inherited Fields</a>
+  &#124; <a href="#pubctors">Ctors</a>
   
-
 
 
 
   &#124; <a href="#pubmethods">Methods</a>
   
 
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
 
 
   &#124; <a href="#inhmethods">Inherited Methods</a>
@@ -365,23 +354,24 @@ Summary:
     public
      
      
-    
-    enum
-<h1>HubMode</h1>
+    abstract
+    class
+<h1>AbstractPuSHModule</h1>
 
 
 
   
-  
-  
-
-  
-    extends Enum&lt;E&nbsp;extends&nbsp;Enum&lt;E&gt;&gt;<br/>
+    extends Object<br/>
   
   
   
 
   
+  
+      implements 
+      
+        MuleContextAware 
+      
   
   
 
@@ -396,7 +386,7 @@ Summary:
 
     <tr>
         
-        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -404,17 +394,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Enum&lt;E&nbsp;extends&nbsp;java.lang.Enum&lt;E&gt;&gt;</td>
-    </tr>
-    
-
-    <tr>
-        
-            <td class="jd-inheritance-space">&nbsp;</td>
-        
-            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
-        
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.HubMode</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.AbstractPuSHModule</td>
     </tr>
     
 
@@ -423,7 +403,93 @@ Summary:
 
 
 
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
 
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a>,
+            
+              <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHSubscriberModule.html">PuSHSubscriberModule</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a></td>
+              <td class="jd-descrcol" width="100%">Allows Mule to act as a PubSubHubbub (aka PuSH) hub.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHSubscriberModule.html">PuSHSubscriberModule</a></td>
+              <td class="jd-descrcol" width="100%">Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html">PuSHHubModuleCapabilitiesAdapter</a>,
+            
+              <a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html">PuSHHubModuleLifecycleAdapter</a>,
+            
+              <a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleCapabilitiesAdapter.html">PuSHSubscriberModuleCapabilitiesAdapter</a>,
+            
+              <a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleLifecycleAdapter.html">PuSHSubscriberModuleLifecycleAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html">PuSHHubModuleCapabilitiesAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>PuSHHubModuleCapabilitiesAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html">PuSHHubModuleLifecycleAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>PuSHHubModuleLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleCapabilitiesAdapter.html">PuSHSubscriberModuleCapabilitiesAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>PuSHSubscriberModuleCapabilitiesAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHSubscriberModule.html">PuSHSubscriberModule</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleLifecycleAdapter.html">PuSHSubscriberModuleLifecycleAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>PuSHSubscriberModuleLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHSubscriberModule.html">PuSHSubscriberModule</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
 
 
 <div class="jd-descr">
@@ -465,36 +531,6 @@ Summary:
 
 
 
-<!-- =========== ENUM CONSTANT SUMMARY =========== -->
-<table id="enumconstants" class="jd-sumtable"><tr><th colspan="12">Enum Values</th></tr>
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>&nbsp;</td>
-        <td class="jd-linkcol">PUBLISH&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-    <tr class=" api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>&nbsp;</td>
-        <td class="jd-linkcol">SUBSCRIBE&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>&nbsp;</td>
-        <td class="jd-linkcol">UNSUBSCRIBE&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-
-
-
-
-
 
 
 
@@ -503,35 +539,17 @@ Summary:
 
 
 <!-- =========== FIELD SUMMARY =========== -->
-<table id="inhfields" class="jd-sumtable"><tr><th>
-  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
-  <div style="clear:left;">Inherited Fields</div></th></tr>
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-java.lang.Enum" class="jd-expando-trigger closed"
-          ><img id="inherited-fields-java.lang.Enum-trigger"
-          src="../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From class
-java.lang.Enum
-<div id="inherited-fields-java.lang.Enum">
-  <div id="inherited-fields-java.lang.Enum-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-fields-java.lang.Enum-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
 
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
-          private
+          protected
           
           final
-          String</nobr></td>
-          <td class="jd-linkcol">name</td>
+          Log</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/pubsubhubbub/AbstractPuSHModule.html#logger">logger</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -540,28 +558,45 @@ java.lang.Enum
           <td class="jd-typecol"><nobr>
           private
           
-          final
-          int</nobr></td>
-          <td class="jd-linkcol">ordinal</td>
+          
+          MuleContext</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/pubsubhubbub/AbstractPuSHModule.html#muleContext">muleContext</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-
-
-
-
 
 </table>
 
 
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/AbstractPuSHModule.html#AbstractPuSHModule()">AbstractPuSHModule</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
 
 
 
@@ -581,42 +616,10 @@ java.lang.Enum
             
             
             
-            String</nobr>
+            MuleContext</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/HubMode.html#getMode()">getMode</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            <a href="../../../../../java/org/mule/module/pubsubhubbub/handler/AbstractHubActionHandler.html">AbstractHubActionHandler</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/HubMode.html#newHandler(org.mule.api.MuleContext, org.mule.module.pubsubhubbub.data.DataStore, org.mule.api.retry.RetryPolicyTemplate)">newHandler</a></span>(MuleContext muleContext, <a href="../../../../../java/org/mule/module/pubsubhubbub/data/DataStore.html">DataStore</a> dataStore, RetryPolicyTemplate retryPolicyTemplate)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            static
-            
-            <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/HubMode.html#parse(java.lang.String)">parse</a></span>(String s)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/AbstractPuSHModule.html#getMuleContext()">getMuleContext</a></span>()</nobr>
         
   </td></tr>
 
@@ -627,28 +630,12 @@ java.lang.Enum
             
             
             
-            static
             
-            <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a></nobr>
+            
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/HubMode.html#valueOf(java.lang.String)">valueOf</a></span>(String name)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            static
-            
-            <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode[]</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/HubMode.html#values()">values</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/AbstractPuSHModule.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext muleContext)</nobr>
         
   </td></tr>
 
@@ -657,6 +644,31 @@ java.lang.Enum
 </table>
 
 
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/pubsubhubbub/AbstractPuSHModule.html#respond(java.util.Map<java.lang.String, java.lang.Object>, org.mule.module.pubsubhubbub.PuSHResponse)">respond</a></span>(Map&lt;String,&nbsp;Object&gt; responseHeaders, <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a> response)</nobr>
+        
+  </td></tr>
+
+
+
+</table>
 
 
 
@@ -666,208 +678,6 @@ java.lang.Enum
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Enum" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-java.lang.Enum-trigger"
-          src="../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From class
-
-  java.lang.Enum
-
-<div id="inherited-methods-java.lang.Enum">
-  <div id="inherited-methods-java.lang.Enum-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-java.lang.Enum-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            Object</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">clone</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">compareTo</span>(Object arg0)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">compareTo</span>(E arg0)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            boolean</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">equals</span>(Object arg0)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">finalize</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            Class&lt;E&gt;</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">getDeclaringClass</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">hashCode</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">name</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">ordinal</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">toString</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            static
-            &lt;T&nbsp;extends&nbsp;Enum&lt;T&gt;&gt;
-            T</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">valueOf</span>(Class&lt;T&gt; arg0, String arg1)</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
 
 
 <tr class="api apilevel-" >
@@ -1072,23 +882,21 @@ From class
 
 
 
-
-
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Comparable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-java.lang.Comparable-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.context.MuleContextAware" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.context.MuleContextAware-trigger"
           src="../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  java.lang.Comparable
+  org.mule.api.context.MuleContextAware
 
-<div id="inherited-methods-java.lang.Comparable">
-  <div id="inherited-methods-java.lang.Comparable-list"
+<div id="inherited-methods-org.mule.api.context.MuleContextAware">
+  <div id="inherited-methods-org.mule.api.context.MuleContextAware-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-java.lang.Comparable-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.api.context.MuleContextAware-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1101,10 +909,10 @@ From interface
             
             
             
-            int</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">compareTo</span>(T arg0)</nobr>
+        <span class="sympad">setMuleContext</span>(MuleContext arg0)</nobr>
         
   </td></tr>
 
@@ -1135,126 +943,88 @@ From interface
 <!-- Enum Values -->
 
 
-<!-- ========= ENUM CONSTANTS DETAIL ======== -->
-<h2>Enum Values</h2>
-
-
-
-
-<A NAME="PUBLISH"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>
-      </span>
-        PUBLISH
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="SUBSCRIBE"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>
-      </span>
-        SUBSCRIBE
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="UNSUBSCRIBE"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>
-      </span>
-        UNSUBSCRIBE
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-
 <!-- Constants -->
 
 
 <!-- Fields -->
 
 
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="logger"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+        final 
+        Log
+      </span>
+        logger
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="muleContext"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        MuleContext
+      </span>
+        muleContext
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+
 <!-- Public ctors -->
 
 
-
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
-<!-- Protected ctors -->
+<h2>Public Constructors</h2>
 
 
 
-<!-- ========= METHOD DETAIL ======== -->
-<!-- Public methdos -->
-
-<h2>Public Methods</h2>
-
-
-
-<A NAME="getMode()"></A>
+<A NAME="AbstractPuSHModule()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1264,9 +1034,9 @@ From interface
          
          
          
-        String
+        
       </span>
-      <span class="sympad">getMode</span>
+      <span class="sympad">AbstractPuSHModule</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1285,7 +1055,22 @@ From interface
 </div>
 
 
-<A NAME="newHandler(org.mule.api.MuleContext, org.mule.module.pubsubhubbub.data.DataStore, org.mule.api.retry.RetryPolicyTemplate)"></A>
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="getMuleContext()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1293,12 +1078,43 @@ From interface
         public 
          
          
-        abstract 
          
-        <a href="../../../../../java/org/mule/module/pubsubhubbub/handler/AbstractHubActionHandler.html">AbstractHubActionHandler</a>
+         
+        MuleContext
       </span>
-      <span class="sympad">newHandler</span>
-      <span class="normal">(MuleContext muleContext, <a href="../../../../../java/org/mule/module/pubsubhubbub/data/DataStore.html">DataStore</a> dataStore, RetryPolicyTemplate retryPolicyTemplate)</span>
+      <span class="sympad">getMuleContext</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setMuleContext(org.mule.api.MuleContext)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMuleContext</span>
+      <span class="normal">(MuleContext muleContext)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1318,127 +1134,8 @@ From interface
           <th>muleContext</td>
           <td></td>
         </tr>
-        <tr>
-          <th>dataStore</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>retryPolicyTemplate</td>
-          <td></td>
-        </tr>
       </table>
   </div>
-
-    </div>
-</div>
-
-
-<A NAME="parse(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-         
-         
-         
-        <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>
-      </span>
-      <span class="sympad">parse</span>
-      <span class="normal">(String s)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>s</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="valueOf(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-         
-         
-         
-        <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>
-      </span>
-      <span class="sympad">valueOf</span>
-      <span class="normal">(String name)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>name</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="values()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-         
-         
-        <a href="../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode[]</a>
-      </span>
-      <span class="sympad">values</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
@@ -1448,6 +1145,55 @@ From interface
 
 
 <!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="respond(java.util.Map<java.lang.String, java.lang.Object>, org.mule.module.pubsubhubbub.PuSHResponse)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">respond</span>
+      <span class="normal">(Map&lt;String,&nbsp;Object&gt; responseHeaders, <a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a> response)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>responseHeaders</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>response</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 
 
 
