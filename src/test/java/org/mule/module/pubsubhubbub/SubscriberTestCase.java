@@ -11,6 +11,7 @@
 package org.mule.module.pubsubhubbub;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.net.URI;
@@ -18,11 +19,12 @@ import java.net.URISyntaxException;
 import java.util.Set;
 
 import org.junit.Test;
+import org.mule.api.MuleContext;
 import org.mule.module.pubsubhubbub.data.TopicSubscription;
 
 public class SubscriberTestCase extends AbstractPuSHTestCase
 {
-    private static final String SUBSCRIBER_FLOW_NAME = "subscriber";
+    private static final int TEST_ON_BEHALF_COUNT = 789;
 
     @Override
     protected String getConfigResources()
@@ -33,29 +35,49 @@ public class SubscriberTestCase extends AbstractPuSHTestCase
     @Override
     protected void doSetUp() throws Exception
     {
-        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 0);
+        setupSubscriberFTC("subscriber1", 0);
         super.doSetUp();
+    }
+
+    @Override
+    protected MuleContext createMuleContext() throws Exception
+    {
+        final MuleContext mc = super.createMuleContext();
+        mc.getRegistry().registerObject("_test_on_behalf_of_value", TEST_ON_BEHALF_COUNT);
+        return mc;
     }
 
     @Test
     public void testSubscribed() throws Exception
     {
-        ensureSubscribed();
+        ensureSubscribed(getMouthTestTopic());
         assertThat(subscriberFTC.getReceivedMessagesCount(), is(0));
     }
 
     @Test
     public void testContentDistribution() throws Exception
     {
-        ensureSubscribed();
+        final String topicUrl = getMouthTestTopic();
+        ensureSubscribed(topicUrl);
         setupPublisherFTC(1);
-        setupSubscriberFTC(SUBSCRIBER_FLOW_NAME, 1);
-        doTestSuccessfulContentDistribution(getTestTopics().get(0));
+        setupSubscriberFTC("subscriber1", 1);
+        doTestSuccessfulContentDistribution(topicUrl);
     }
 
-    protected void ensureSubscribed() throws InterruptedException, URISyntaxException
+    @Test
+    public void testContentDistributionWithOnBehalf() throws Exception
     {
-        final Set<TopicSubscription> stored = ponderUntilSubscriptionStored(new URI(getTestTopics().get(0)));
+        final String topicUrl = getBocaTestTopic();
+        ensureSubscribed(topicUrl);
+        setupPublisherFTC(1);
+        setupSubscriberFTC("subscriber2", 1);
+        doTestSuccessfulContentDistribution(topicUrl);
+        assertEquals(TEST_ON_BEHALF_COUNT, dataStore.getTotalSubscriberCount(new URI(topicUrl)));
+    }
+
+    protected void ensureSubscribed(final String topicUrl) throws InterruptedException, URISyntaxException
+    {
+        final Set<TopicSubscription> stored = ponderUntilSubscriptionStored(new URI(topicUrl));
         assertThat(stored.size(), is(1));
     }
 }

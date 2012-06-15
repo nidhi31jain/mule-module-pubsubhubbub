@@ -15,17 +15,27 @@
           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-    <PuSH-sub:config name="sub-config" hubUrl="http://localhost:${port1}/hub"
-        callbackUrl="http://localhost:${port2}/subscriber" topic="http://localhost:${port3}/feeds/mouth/rss" />
+    <PuSH-sub:config name="sub1-config" hubUrl="http://localhost:${port1}/hub"
+        callbackUrl="http://localhost:${port2}/subscriber1" topic="http://localhost:${port3}/feeds/mouth/rss" />
 
-    <flow name="subscriber">
-        <http:inbound-endpoint address="http://localhost:${port2}/subscriber"
+    <flow name="subscriber1">
+        <http:inbound-endpoint address="http://localhost:${port2}/subscriber1"
             exchange-pattern="request-response" />
-        <PuSH-sub:subscriber />
+        <PuSH-sub:subscriber config-ref="sub1-config" />
+        <test:component />
+    </flow>
+
+    <PuSH-sub:config name="sub2-config" hubUrl="http://localhost:${port1}/hub"
+        callbackUrl="http://localhost:${port2}/subscriber2" topic="http://localhost:${port3}/feeds/boca/rss" />
+
+    <flow name="subscriber2">
+        <http:inbound-endpoint address="http://localhost:${port2}/subscriber2"
+            exchange-pattern="request-response" />
+        <PuSH-sub:subscriber config-ref="sub2-config" onBehalfOf="#[registry:_test_on_behalf_of_value]" />
         <test:component />
     </flow>
   
-   <!-- Stubs -->
+    <!-- Stubs -->
     <spring:beans>
         <spring:bean id="hubObjectStore"
             class="org.mule.util.store.PartitionedInMemoryObjectStore" />

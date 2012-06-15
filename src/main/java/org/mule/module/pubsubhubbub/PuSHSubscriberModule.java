@@ -32,6 +32,7 @@ import org.mule.api.annotations.param.Payload;
 import org.mule.api.callback.SourceCallback;
 import org.mule.transport.http.HttpConnector;
 import org.mule.transport.http.HttpConstants;
+import org.mule.util.NumberUtils;
 import org.mule.util.StringUtils;
 
 /**
@@ -142,6 +143,8 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
      * @param contentType the content-type of the request
      * @param responseHeaders the outbound/response headers
      * @param payload the message payload
+     * @param onBehalfOf (Optional) number of subscribers this subscriber is representing, should be either an integer
+     *            or a Mule expression
      * @param sourceCallback the callback to call when content is propagated
      * @return the response body
      * @throws Exception
@@ -152,12 +155,13 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
     public String handleSubscriberRequest(@InboundHeaders(HttpConnector.HTTP_METHOD_PROPERTY) final String httpMethod,
                                           @InboundHeaders(HttpConstants.HEADER_CONTENT_TYPE + "?") final String contentType,
                                           @OutboundHeaders final Map<String, Object> responseHeaders,
+                                          @Optional final String onBehalfOf,
                                           @Payload final String payload,
                                           final SourceCallback sourceCallback) throws Exception
     {
         if (StringUtils.equalsIgnoreCase(httpMethod, HttpConstants.METHOD_POST))
         {
-            return handleContentDelivery(contentType, responseHeaders, payload, sourceCallback);
+            return handleContentDelivery(contentType, responseHeaders, onBehalfOf, payload, sourceCallback);
         }
 
         if (StringUtils.equalsIgnoreCase(httpMethod, HttpConstants.METHOD_GET))
@@ -209,6 +213,7 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
 
     protected String handleContentDelivery(final String contentType,
                                            final Map<String, Object> responseHeaders,
+                                           final String onBehalfOf,
                                            final String payload,
                                            final SourceCallback sourceCallback) throws Exception
     {
@@ -221,11 +226,30 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
                                         + Constants.ATOM_CONTENT_TYPE));
         }
 
+        handleOnBehalfOf(responseHeaders, onBehalfOf);
+
         sourceCallback.process(payload);
         return respond(responseHeaders, PuSHResponse.noContent());
     }
 
-    protected String getVerifyToken()
+    protected void handleOnBehalfOf(final Map<String, Object> responseHeaders, final String onBehalfOf)
+    {
+        if (StringUtils.isBlank(onBehalfOf))
+        {
+            return;
+        }
+
+        if (NumberUtils.isDigits(onBehalfOf))
+        {
+            responseHeaders.put(Constants.HUB_ON_BEHALF_OF_HEADER, Integer.valueOf(onBehalfOf));
+        }
+        else
+        {
+            logger.warn("Ignoring non-numeric onBehalfOf value: " + onBehalfOf);
+        }
+    }
+
+    public String getVerifyToken()
     {
         return DigestUtils.shaHex(hubUrl + topic);
     }

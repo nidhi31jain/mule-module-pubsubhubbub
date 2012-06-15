@@ -256,7 +256,7 @@ public class HubTestCase extends AbstractPuSHTestCase
     @Test
     public void testSuccessfullContentDistribution() throws Exception
     {
-        final String topicUrl = getTestTopics().get(0);
+        final String topicUrl = getMouthTestTopic();
         final Map<String, List<String>> extraSubscriptionParam = Collections.singletonMap("hub.topic",
             Collections.singletonList(topicUrl));
         doTestSuccessfullSynchronousVerifiableAction(Action.SUBSCRIBE, extraSubscriptionParam);

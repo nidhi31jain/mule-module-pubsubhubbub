@@ -68,9 +68,9 @@ public abstract class AbstractPuSHTestCase extends FunctionalTestCase
     @Override
     protected void doSetUp() throws Exception
     {
-        super.doSetUp();
         dataStore = muleContext.getRegistry().lookupObject(PuSHHubModule.class).getDataStore();
         httpClient = new HttpClient();
+        super.doSetUp();
     }
 
     protected int getHubPort()
@@ -88,10 +88,14 @@ public abstract class AbstractPuSHTestCase extends FunctionalTestCase
         return publisherPort.getNumber();
     }
 
-    protected List<String> getTestTopics()
+    protected String getMouthTestTopic()
     {
-        return Arrays.asList("http://localhost:" + getPublisherPort() + "/feeds/mouth/rss",
-            "http://localhost:" + getPublisherPort() + "/feeds/boca/rss");
+        return "http://localhost:" + getPublisherPort() + "/feeds/mouth/rss";
+    }
+
+    protected String getBocaTestTopic()
+    {
+        return "http://localhost:" + getPublisherPort() + "/feeds/boca/rss";
     }
 
     protected void setupSubscriberFTC(final String flowName, final int messagesExpected) throws Exception
@@ -176,7 +180,7 @@ public abstract class AbstractPuSHTestCase extends FunctionalTestCase
         assertEquals("204", response.getInboundProperty("http.status"));
 
         publisherCC.await(TimeUnit.SECONDS.toMillis(getTestTimeoutSecs()));
-        assertEquals("/feeds/mouth/rss", publisherFTC.getLastReceivedMessage());
+        assertTrue(topicUrl.contains((String) publisherFTC.getLastReceivedMessage()));
     }
 
     protected MuleMessage wrapAndSendRequestToHub(final Map<String, String> subscriptionRequest)
