@@ -1,13 +1,27 @@
-<!-- BEGIN_INCLUDE(pubsubhubbub:handleRequest) -->
+<!-- BEGIN_INCLUDE(PuSH-hub:handleHubRequest) -->
 <flow name="hub">
-    <http:inbound-endpoint address="http://localhost:${port1}/hub" />
-    <pubsubhubbub:hub />
+    <http:inbound-endpoint address="http://localhost:${port1}/hub"
+        exchange-pattern="request-response" />
+    <PuSH-hub:hub />
 </flow>
-<!-- END_INCLUDE(pubsubhubbub:handleRequest) -->
-<!-- BEGIN_INCLUDE(pubsubhubbub:config) -->
-    <pubsubhubbub:config objectStore-ref="hubObjectStore"
-                         retryCount="5"
-                         retryFrequency="3600000"
-                         defaultLeaseSeconds="86400" />  
-<!-- END_INCLUDE(pubsubhubbub:config) -->
-                         
+<!-- END_INCLUDE(PuSH-hub:handleHubRequest) -->
+<!-- BEGIN_INCLUDE(PuSH-hub:config) -->
+<PuSH-hubconfig objectStore-ref="hubObjectStore"
+                retryCount="5"
+                retryFrequency="3600000"
+                defaultLeaseSeconds="86400" />  
+<!-- END_INCLUDE(PuSH-hub:config) -->
+
+<!-- BEGIN_INCLUDE(PuSH-subscriber:handleSubscriberRequest) -->
+<flow name="subscriber">
+    <http:inbound-endpoint address="http://localhost:${port2}/subscriber"
+        exchange-pattern="request-response" />
+    <PuSH-sub:subscriber />
+    <!-- rest of the flow handles content delivery -->
+</flow>
+<!-- END_INCLUDE(PuSH-subscriber:handleSubscriberRequest) -->
+<!-- BEGIN_INCLUDE(PuSH-subscriber:config) -->
+<PuSH-sub:config hubUrl="https://pubsubhubbub.appspot.com"
+                 callbackUrl="http://some.public-domain.com/subscriber"
+                 topic="http://blogs.mulesoft.com" />
+<!-- END_INCLUDE(PuSH-subscriber:config) -->

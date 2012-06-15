@@ -137,7 +137,7 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
     /**
      * Handle all subscriber requests.
      * <p/>
-     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample pubsubhubbub:handleRequest}
+     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample PuSH-subscriber:handleSubscriberRequest}
      * 
      * @param httpMethod the HTTP method name
      * @param contentType the content-type of the request

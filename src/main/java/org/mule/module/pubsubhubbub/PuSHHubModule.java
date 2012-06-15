@@ -107,7 +107,7 @@ public class PuSHHubModule extends AbstractPuSHModule
     /**
      * Handle all hub requests.
      * <p/>
-     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample pubsubhubbub:handleRequest}
+     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample PuSH-hub:handleHubRequest}
      * 
      * @param payload the message payload
      * @param httpMethod the HTTP method name
