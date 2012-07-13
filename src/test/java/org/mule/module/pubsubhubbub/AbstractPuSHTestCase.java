@@ -10,8 +10,10 @@
 
 package org.mule.module.pubsubhubbub;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.io.StringReader;
@@ -41,7 +43,6 @@ import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.transport.http.HttpConstants;
 
 import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 
 public abstract class AbstractPuSHTestCase extends FunctionalTestCase
@@ -172,15 +173,20 @@ public abstract class AbstractPuSHTestCase extends FunctionalTestCase
     protected void doTestSuccessfullNewContentNotificationAndContentFetch(final String topicUrl)
         throws Exception
     {
+        doNotifyHubOfNewContent(topicUrl);
+
+        publisherCC.await(TimeUnit.SECONDS.toMillis(getTestTimeoutSecs()));
+        assertTrue(topicUrl.contains((String) publisherFTC.getLastReceivedMessage()));
+    }
+
+    protected void doNotifyHubOfNewContent(final String topicUrl) throws Exception
+    {
         final Map<String, String> subscriptionRequest = new HashMap<String, String>();
         subscriptionRequest.put("hub.mode", "publish");
         subscriptionRequest.put("hub.url", topicUrl);
 
         final MuleMessage response = wrapAndSendRequestToHub(subscriptionRequest);
         assertEquals("204", response.getInboundProperty("http.status"));
-
-        publisherCC.await(TimeUnit.SECONDS.toMillis(getTestTimeoutSecs()));
-        assertTrue(topicUrl.contains((String) publisherFTC.getLastReceivedMessage()));
     }
 
     protected MuleMessage wrapAndSendRequestToHub(final Map<String, String> subscriptionRequest)
@@ -222,8 +228,7 @@ public abstract class AbstractPuSHTestCase extends FunctionalTestCase
         return response;
     }
 
-    protected void doTestSuccessfulContentDistribution(final String topicUrl)
-        throws Exception, InterruptedException, FeedException, URISyntaxException
+    protected void doTestSuccessfulContentDistribution(final String topicUrl) throws Exception
     {
         doTestSuccessfullNewContentNotificationAndContentFetch(topicUrl);
 
@@ -232,5 +237,11 @@ public abstract class AbstractPuSHTestCase extends FunctionalTestCase
         final SyndFeed syndFeed = new SyndFeedInput(true).build(new StringReader(
             (String) subscriberFTC.getLastReceivedMessage()));
         assertEquals("rss_2.0", syndFeed.getFeedType());
+    }
+
+    protected void ensureSubscribed(final String topicUrl) throws InterruptedException, URISyntaxException
+    {
+        final Set<TopicSubscription> stored = ponderUntilSubscriptionStored(new URI(topicUrl));
+        assertThat(stored.size(), is(1));
     }
 }

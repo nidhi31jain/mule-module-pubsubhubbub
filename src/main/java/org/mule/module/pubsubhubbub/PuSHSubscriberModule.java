@@ -15,10 +15,8 @@ import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.Map;
 
-import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.Validate;
-import org.mule.api.MuleException;
 import org.mule.api.MuleMessage;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
@@ -36,13 +34,7 @@ import org.mule.util.NumberUtils;
 import org.mule.util.StringUtils;
 
 /**
- * Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.<br/>
- * Pubsubhubbub is a simple, open, web-hook-based pubsub protocol & open source reference implementation. <br/>
- * This module implements the <a
- * href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html">PubSubHubbub Core 0.3 -- Working Draft
- * specification</a>, except <a
- * href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution">7.5 Aggregated
- * Content Distribution</a>.
+ * Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.
  * 
  * @author MuleSoft, Inc.
  */
@@ -56,8 +48,8 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
     private String hubUrl;
 
     /**
-     * The URL that the hub should call back, which is the public URL of the HTTP inbound endpoint placed in front of
-     * the <code>subscriber</code> element.
+     * The URL that the hub should call back, which is the public URL of the HTTP
+     * inbound endpoint placed in front of the <code>subscriber</code> element.
      */
     @Configurable
     private String callbackUrl;
@@ -69,8 +61,8 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
     private String topic;
 
     /**
-     * (Optional) Number of seconds for which the subscriber would like to have the subscription active. Defaults to 7
-     * days.
+     * (Optional) Number of seconds for which the subscriber would like to have the
+     * subscription active. Defaults to 7 days.
      */
     @Default(value = "604800")
     @Configurable
@@ -78,8 +70,8 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
     private Long leaseSeconds;
 
     /**
-     * (Optional) A subscriber-provided secret string that will be used to compute an HMAC digest for authorized content
-     * distribution.
+     * (Optional) A subscriber-provided secret string that will be used to compute an
+     * HMAC digest for authorized content distribution.
      */
     @Configurable
     @Optional
@@ -119,11 +111,11 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
 
         final String responseStatus = response.getInboundProperty(HttpConnector.HTTP_STATUS_PROPERTY);
 
-        if ("202".equalsIgnoreCase(responseStatus))
+        if ("202".equals(responseStatus))
         {
             logger.info("Subscription request sent to hub: " + hubUrl);
         }
-        else if ("204".equalsIgnoreCase(responseStatus))
+        else if ("204".equals(responseStatus))
         {
             logger.info("Subscription request accepted by hub: " + hubUrl);
         }
@@ -137,19 +129,18 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
     /**
      * Handle all subscriber requests.
      * <p/>
-     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample PuSH-subscriber:handleSubscriberRequest}
+     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample
+     * PuSH-subscriber:handleSubscriberRequest}
      * 
      * @param httpMethod the HTTP method name
      * @param contentType the content-type of the request
      * @param responseHeaders the outbound/response headers
      * @param payload the message payload
-     * @param onBehalfOf (Optional) number of subscribers this subscriber is representing, should be either an integer
-     *            or a Mule expression
+     * @param onBehalfOf (Optional) number of subscribers this subscriber is
+     *            representing, should be either an integer or a Mule expression
      * @param sourceCallback the callback to call when content is propagated
      * @return the response body
      * @throws Exception
-     * @throws MuleException
-     * @throws DecoderException
      */
     @Processor(name = "subscriber", intercepting = true)
     public String handleSubscriberRequest(@InboundHeaders(HttpConnector.HTTP_METHOD_PROPERTY) final String httpMethod,

@@ -64,31 +64,4 @@
         </response>
         <test:component />
     </flow>
-
-    <flow name="publisher">
-        <composite-source>
-            <http:inbound-endpoint address="http://localhost:${port3}/feeds/mouth/rss" />
-            <http:inbound-endpoint address="http://localhost:${port3}/feeds/boca/rss" />
-        </composite-source>
-        <response>
-            <component>
-                <singleton-object class="org.mule.component.simple.StaticComponent">
-                    <property key="dataFile" value="mouth.rss" />
-                </singleton-object>
-            </component>
-            <message-properties-transformer>
-                <add-message-property key="Content-Type" value="application/rss+xml" />
-            </message-properties-transformer>
-        </response>
-        <script:transformer>
-            <script:script engine="groovy">
-            <![CDATA[
-                userAgent = message.getInboundProperty('User-Agent')
-                if (!(userAgent==~ /Mule PubSubHubbub Hub \(.+; \d+ subscribers\)/)) throw new IllegalArgumentException("Wrong user agent: ${userAgent}")
-                return message
-            ]]>
-            </script:script>
-        </script:transformer>
-        <test:component />
-    </flow>
 </mule>

@@ -1,7 +1,9 @@
 Mule PubSubHubbub Module
 ========================
 
-Allows Mule to act as a PubSubHubbub (aka PuSH) hub and subscriber.
+Pubsubhubbub (aka PuSH) is a simple, open, web-hook-based publish/subscribe protocol and open source reference implementation.
+
+This module Allows Mule to act as a PubSubHubbub hub, subscriber and publisher.
 
 This module implements the [PubSubHubbub Core 0.3 -- Working Draft](http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html) specification, except [7.5 Aggregated Content Distribution](http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution).
 

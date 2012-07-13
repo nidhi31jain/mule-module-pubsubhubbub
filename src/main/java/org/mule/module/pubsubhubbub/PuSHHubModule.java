@@ -21,6 +21,7 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 import org.mule.api.MuleException;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
@@ -40,13 +41,7 @@ import org.mule.transport.http.HttpConnector;
 import org.mule.transport.http.HttpConstants;
 
 /**
- * Allows Mule to act as a PubSubHubbub (aka PuSH) hub.<br/>
- * Pubsubhubbub is a simple, open, web-hook-based pubsub protocol & open source reference implementation. <br/>
- * This module implements the <a
- * href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html">PubSubHubbub Core 0.3 -- Working Draft
- * specification</a>, except <a
- * href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution">7.5 Aggregated
- * Content Distribution</a>.
+ * Allows Mule to act as a PubSubHubbub (aka PuSH) hub.
  * 
  * @author MuleSoft, Inc.
  */
@@ -58,7 +53,8 @@ public class PuSHHubModule extends AbstractPuSHModule
     private Map<HubMode, AbstractHubActionHandler> requestHandlers;
 
     /**
-     * Any implementation of {@link PartitionableObjectStore} can be used as a back-end for the hub.
+     * Any implementation of {@link PartitionableObjectStore} can be used as a
+     * back-end for the hub.
      */
     @Configurable
     private PartitionableObjectStore<Serializable> objectStore;
@@ -90,6 +86,8 @@ public class PuSHHubModule extends AbstractPuSHModule
     @PostConstruct
     public void wireResources()
     {
+        Validate.notNull(objectStore, "objectStore can't be null");
+
         dataStore = new DataStore(objectStore);
 
         final SimpleRetryPolicyTemplate delegate = new SimpleRetryPolicyTemplate(retryFrequency, retryCount);
@@ -107,7 +105,8 @@ public class PuSHHubModule extends AbstractPuSHModule
     /**
      * Handle all hub requests.
      * <p/>
-     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample PuSH-hub:handleHubRequest}
+     * {@sample.xml ../../../doc/pubsubhubbub-connector.xml.sample
+     * PuSH-hub:handleHubRequest}
      * 
      * @param payload the message payload
      * @param httpMethod the HTTP method name

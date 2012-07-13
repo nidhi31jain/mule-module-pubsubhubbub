@@ -73,7 +73,7 @@ public class HubTestCase extends AbstractPuSHTestCase
     @Override
     protected String getConfigResources()
     {
-        return "push-hub-tests-config.xml";
+        return "push-hub-tests-config.xml,publisher-stub-config.xml";
     }
 
     @Override

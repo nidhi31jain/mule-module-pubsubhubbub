@@ -15,12 +15,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Set;
 
 import org.junit.Test;
 import org.mule.api.MuleContext;
-import org.mule.module.pubsubhubbub.data.TopicSubscription;
 
 public class SubscriberTestCase extends AbstractPuSHTestCase
 {
@@ -29,7 +26,7 @@ public class SubscriberTestCase extends AbstractPuSHTestCase
     @Override
     protected String getConfigResources()
     {
-        return "push-subscriber-tests-config.xml";
+        return "push-subscriber-tests-config.xml,publisher-stub-config.xml";
     }
 
     @Override
@@ -73,11 +70,5 @@ public class SubscriberTestCase extends AbstractPuSHTestCase
         setupSubscriberFTC("subscriber2", 1);
         doTestSuccessfulContentDistribution(topicUrl);
         assertEquals(TEST_ON_BEHALF_COUNT, dataStore.getTotalSubscriberCount(new URI(topicUrl)));
-    }
-
-    protected void ensureSubscribed(final String topicUrl) throws InterruptedException, URISyntaxException
-    {
-        final Set<TopicSubscription> stored = ponderUntilSubscriptionStored(new URI(topicUrl));
-        assertThat(stored.size(), is(1));
     }
 }

@@ -25,3 +25,10 @@
                  callbackUrl="http://some.public-domain.com/subscriber"
                  topic="http://blogs.mulesoft.com" />
 <!-- END_INCLUDE(PuSH-subscriber:config) -->
+
+<!-- BEGIN_INCLUDE(PuSH-publisher:notifyNewContent) -->
+<PuSH-pub:notify-new-content topic="http://blogs.mulesoft.com" />
+<!-- END_INCLUDE(PuSH-publisher:notifyNewContent) -->
+<!-- BEGIN_INCLUDE(PuSH-publisher:config) -->
+<PuSH-publisher:config hubUrl="https://pubsubhubbub.appspot.com" />
+<!-- END_INCLUDE(PuSH-publisher:config) -->
