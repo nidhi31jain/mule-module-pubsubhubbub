@@ -75,7 +75,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 <title>
 
-  PuSHHubModule
+  PuSHPublisherModule
 
 
 | Mule PubSubHubbub (aka PuSH) Module
@@ -237,9 +237,9 @@ Summary:
 <div class="jd-tagdata">
       <table class="jd-tagtable">
         <tbody><tr>
-          <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/PuSH-hub</td>
+          <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/PuSH-publisher</td>
         </tr><tr>
-          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/PuSH-hub/current/mule-PuSH-hub.xsd&nbsp;&nbsp;(<a href="PuSH-hub-schema.html">View Schema</a>)</td>
+          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/PuSH-publisher/current/mule-PuSH-publisher.xsd&nbsp;&nbsp;(<a href="PuSH-publisher-schema.html">View Schema</a>)</td>
         </tr>
 <tr>
           <th>Schema Version</th><td>3.3</td>
@@ -254,7 +254,7 @@ Summary:
 
 
 <h2>Module Overview</h2>
-<p>Allows Mule to act as a PubSubHubbub (aka PuSH) hub.</p>
+<p>Allows Mule to act as a PubSubHubbub (aka PuSH) publisher.</p>
 
 
 </div><!-- jd-descr -->
@@ -282,7 +282,7 @@ Summary:
 	 
     <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/PuSH-hub.html#config">&lt;PuSH-hub:config&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/PuSH-publisher.html#config">&lt;PuSH-publisher:config&gt;</a></nobr>
         <div class="jd-descrdiv">Configure an instance of this module</div>
   </td></tr>
 </table>
@@ -298,9 +298,10 @@ Summary:
 	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/PuSH-hub.html#hub">&lt;PuSH-hub:hub&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/PuSH-publisher.html#notify-new-content">&lt;PuSH-publisher:notify-new-content&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Handle all hub requests.</div>
+        <div class="jd-descrdiv">Notifies the configured hub that new content is available for the considered
+ topic.</div>
         
   </td></tr>
 
@@ -326,12 +327,12 @@ similar to the following:</p>
 <pre>
 &lt;mule xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:PuSH-hub="http://www.mulesoft.org/schema/mule/PuSH-hub"
+      xmlns:PuSH-publisher="http://www.mulesoft.org/schema/mule/PuSH-publisher"
       xsi:schemaLocation="
                http://www.mulesoft.org/schema/mule/core
                http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-               http://www.mulesoft.org/schema/mule/PuSH-hub
-               http://www.mulesoft.org/schema/mule/PuSH-hub/current/mule-PuSH-hub.xsd"&gt;
+               http://www.mulesoft.org/schema/mule/PuSH-publisher
+               http://www.mulesoft.org/schema/mule/PuSH-publisher/current/mule-PuSH-publisher.xsd"&gt;
 
       &lt;!-- here goes your flows and configuration elements --&gt;
 
@@ -354,38 +355,10 @@ specify which configuration to use.</p>
     
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
-          xs:long</nobr></td>
-          <td class="jd-linkcol"><nobr>defaultLeaseSeconds</nobr></td>
-          <td class="jd-descrcol">604800</td>
-          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The default lease time in milliseconds.</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          </nobr></td>
-          <td class="jd-linkcol"><nobr>objectStore</nobr></td>
+          xs:string</nobr></td>
+          <td class="jd-linkcol"><nobr>hubUrl</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%">Any implementation of PartitionableObjectStore can be used as a
- back-end for the hub.</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          xs:int</nobr></td>
-          <td class="jd-linkcol"><nobr>retryCount</nobr></td>
-          <td class="jd-descrcol">12</td>
-          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The retry count.</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          xs:int</nobr></td>
-          <td class="jd-linkcol"><nobr>retryFrequency</nobr></td>
-          <td class="jd-descrcol">300000</td>
-          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The retry frequency in milliseconds.</td>
+          <td class="jd-descrcol" width="100%">The URL of the PubSubHubbub to connect to.</td>
       </tr>
       
     
@@ -407,11 +380,11 @@ specify which configuration to use.</p>
 
 
 
-<A NAME="hub"></A>
+<A NAME="notify-new-content"></A>
 
 <div class="jd-details api apilevel-">
     <h4 class="jd-details-title">
-      <span class="sympad">&lt;PuSH-hub:hub&gt;</span>
+      <span class="sympad">&lt;PuSH-publisher:notify-new-content&gt;</span>
     </h4>
       <div class="api-level">
         <div>
@@ -420,13 +393,10 @@ specify which configuration to use.</p>
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Handle all hub requests.
+  <div class="jd-tagdata jd-tagdescr"><p>Notifies the configured hub that new content is available for the considered
+ topic.
  <p/>
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;flow name="hub"&gt;
-    &lt;http:inbound-endpoint address="http://localhost:${port1}/hub"
-        exchange-pattern="request-response" /&gt;
-    &lt;PuSH-hub:hub /&gt;
-&lt;/flow&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;PuSH-pub:notify-new-content topic="http://blogs.mulesoft.com" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -440,29 +410,10 @@ specify which configuration to use.</p>
           
                 
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>httpMethod</nobr></td>
+                    <td class="jd-linkcol"><nobr>topic</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The HTTP method name</td>
-                </tr>
-                
-                
-          
-                
-                <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>contentType</nobr></td>
-                    <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The content-type of the request</td>
-                </tr>
-                
-                
-          
-                
-          
-                
-                <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>payload</nobr></td>
-                    <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The message payload</td>
+                    <td class="jd-descrcol" width="100%">The topic URL for which the publisher wants to notify that new
+            content is available</td>
                 </tr>
                 
                 
@@ -478,22 +429,9 @@ specify which configuration to use.</p>
           
             
           
-            
-          
-            
-            <tr><th colspan="12"><nobr>&lt;PuSH-hub:response-headers&gt;</nobr></br><span style="font-weight: normal;">The outbound/response headers</span></th></tr>
-            
-            
-          
-            
-          
       </table>
   </div>
   
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>the response body</li></ul>
-  </div>
     
   
   <div class="jd-tagdata">
@@ -502,16 +440,9 @@ specify which configuration to use.</p>
         <tr><th>Payload Class</th><th>Description</th></tr>
         
         <tr>
-            <td></td>
-            <td>MuleException</td>
-        </tr>
-        <tr>
-            <td>DecoderException</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>MuleException</td>
-            <td></td>
+            <td>Exception</td>
+            <td>if something goes wrong with the notification
+</td>
         </tr>
       </table>
   </div>

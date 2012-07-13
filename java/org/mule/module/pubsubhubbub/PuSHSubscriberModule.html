@@ -236,6 +236,7 @@
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/AbstractPuSHModule.html">AbstractPuSHModule</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/Constants.html">Constants</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHPublisherModule.html">PuSHPublisherModule</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHResponse.html">PuSHResponse</a></li>
           <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/PuSHSubscriberModule.html">PuSHSubscriberModule</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/pubsubhubbub/Utils.html">Utils</a></li>
@@ -493,13 +494,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.<br/>
- Pubsubhubbub is a simple, open, web-hook-based pubsub protocol & open source reference implementation. <br/>
- This module implements the <a
- href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html">PubSubHubbub Core 0.3 -- Working Draft
- specification</a>, except <a
- href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution">7.5 Aggregated
- Content Distribution</a>.</p>
+<p>Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.</p>
 
 
 
@@ -556,8 +551,8 @@ Summary:
           
           String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHSubscriberModule.html#callbackUrl">callbackUrl</a></td>
-          <td class="jd-descrcol" width="100%">The URL that the hub should call back, which is the public URL of the HTTP inbound endpoint placed in front of
- the <code>subscriber</code> element.</td>
+          <td class="jd-descrcol" width="100%">The URL that the hub should call back, which is the public URL of the HTTP
+ inbound endpoint placed in front of the <code>subscriber</code> element.</td>
       </tr>
       
     
@@ -579,7 +574,8 @@ Summary:
           
           Long</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHSubscriberModule.html#leaseSeconds">leaseSeconds</a></td>
-          <td class="jd-descrcol" width="100%">(Optional) Number of seconds for which the subscriber would like to have the subscription active.</td>
+          <td class="jd-descrcol" width="100%">(Optional) Number of seconds for which the subscriber would like to have the
+ subscription active.</td>
       </tr>
       
     
@@ -590,8 +586,8 @@ Summary:
           
           String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../org/mule/module/pubsubhubbub/PuSHSubscriberModule.html#secret">secret</a></td>
-          <td class="jd-descrcol" width="100%">(Optional) A subscriber-provided secret string that will be used to compute an HMAC digest for authorized content
- distribution.</td>
+          <td class="jd-descrcol" width="100%">(Optional) A subscriber-provided secret string that will be used to compute an
+ HMAC digest for authorized content distribution.</td>
       </tr>
       
     
@@ -1344,8 +1340,8 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>The URL that the hub should call back, which is the public URL of the HTTP inbound endpoint placed in front of
- the <code>subscriber</code> element.
+  <div class="jd-tagdata jd-tagdescr"><p>The URL that the hub should call back, which is the public URL of the HTTP
+ inbound endpoint placed in front of the <code>subscriber</code> element.
 </p></div>
 
     
@@ -1407,8 +1403,8 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>(Optional) Number of seconds for which the subscriber would like to have the subscription active. Defaults to 7
- days.
+  <div class="jd-tagdata jd-tagdescr"><p>(Optional) Number of seconds for which the subscriber would like to have the
+ subscription active. Defaults to 7 days.
 </p></div>
 
     
@@ -1439,8 +1435,8 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>(Optional) A subscriber-provided secret string that will be used to compute an HMAC digest for authorized content
- distribution.
+  <div class="jd-tagdata jd-tagdescr"><p>(Optional) A subscriber-provided secret string that will be used to compute an
+ HMAC digest for authorized content distribution.
 </p></div>
 
     
@@ -1766,8 +1762,8 @@ From interface
         </tr>
         <tr>
           <th>onBehalfOf</td>
-          <td>(Optional) number of subscribers this subscriber is representing, should be either an integer
-            or a Mule expression</td>
+          <td>(Optional) number of subscribers this subscriber is
+            representing, should be either an integer or a Mule expression</td>
         </tr>
         <tr>
           <th>payload</td>
@@ -1786,18 +1782,6 @@ From interface
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
-        <tr>
-            <th></td>
-            <td>Exception</td>
-        </tr>  
-        <tr>
-            <th></td>
-            <td>MuleException</td>
-        </tr>  
-        <tr>
-            <th>DecoderException</td>
-            <td></td>
-        </tr>  
         <tr>
             <th>Exception</td>
             <td></td>

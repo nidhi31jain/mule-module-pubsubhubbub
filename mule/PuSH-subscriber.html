@@ -254,13 +254,7 @@ Summary:
 
 
 <h2>Module Overview</h2>
-<p>Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.<br/>
- Pubsubhubbub is a simple, open, web-hook-based pubsub protocol & open source reference implementation. <br/>
- This module implements the <a
- href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html">PubSubHubbub Core 0.3 -- Working Draft
- specification</a>, except <a
- href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution">7.5 Aggregated
- Content Distribution</a>.</p>
+<p>Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.</p>
 
 
 </div><!-- jd-descr -->
@@ -363,8 +357,8 @@ specify which configuration to use.</p>
           xs:string</nobr></td>
           <td class="jd-linkcol"><nobr>callbackUrl</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%">The URL that the hub should call back, which is the public URL of the HTTP inbound endpoint placed in front of
- the <code>subscriber</code> element.</td>
+          <td class="jd-descrcol" width="100%">The URL that the hub should call back, which is the public URL of the HTTP
+ inbound endpoint placed in front of the <code>subscriber</code> element.</td>
       </tr>
       
     
@@ -382,7 +376,8 @@ specify which configuration to use.</p>
           xs:long</nobr></td>
           <td class="jd-linkcol"><nobr>leaseSeconds</nobr></td>
           <td class="jd-descrcol">604800</td>
-          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>(Optional) Number of seconds for which the subscriber would like to have the subscription active.</td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>(Optional) Number of seconds for which the subscriber would like to have the
+ subscription active.</td>
       </tr>
       
     
@@ -391,8 +386,8 @@ specify which configuration to use.</p>
           xs:string</nobr></td>
           <td class="jd-linkcol"><nobr>secret</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>(Optional) A subscriber-provided secret string that will be used to compute an HMAC digest for authorized content
- distribution.</td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>(Optional) A subscriber-provided secret string that will be used to compute an
+ HMAC digest for authorized content distribution.</td>
       </tr>
       
     
@@ -479,8 +474,8 @@ specify which configuration to use.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>onBehalfOf</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>(Optional) number of subscribers this subscriber is representing, should be either an integer
-            or a Mule expression</td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>(Optional) number of subscribers this subscriber is
+            representing, should be either an integer or a Mule expression</td>
                 </tr>
                 
                 
@@ -541,18 +536,6 @@ specify which configuration to use.</p>
       <table class="jd-sumtable">
         <tr><th>Payload Class</th><th>Description</th></tr>
         
-        <tr>
-            <td></td>
-            <td>Exception</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>MuleException</td>
-        </tr>
-        <tr>
-            <td>DecoderException</td>
-            <td></td>
-        </tr>
         <tr>
             <td>Exception</td>
             <td></td>

@@ -384,13 +384,7 @@
       &lt;xs:complexContent&gt;
         &lt;xs:extension base=&quot;mule:abstractExtensionType&quot;&gt;
           &lt;xs:annotation&gt;
-            &lt;xs:documentation&gt;Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.&amp;lt;br/&amp;gt;
-Pubsubhubbub is a simple, open, web-hook-based pubsub protocol &amp;amp; open source reference implementation. &amp;lt;br/&amp;gt;
-This module implements the &amp;lt;a
-href=&quot;http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html&quot;&amp;gt;PubSubHubbub Core 0.3 -- Working Draft
-specification&amp;lt;/a&amp;gt;, except &amp;lt;a
-href=&quot;http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#aggregatedistribution&quot;&amp;gt;7.5 Aggregated
-Content Distribution&amp;lt;/a&amp;gt;.&lt;/xs:documentation&gt;
+            &lt;xs:documentation&gt;Allows Mule to act as a PubSubHubbub (aka PuSH) subscriber.&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
           &lt;xs:attribute name=&quot;name&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
             &lt;xs:annotation&gt;
@@ -404,8 +398,8 @@ Content Distribution&amp;lt;/a&amp;gt;.&lt;/xs:documentation&gt;
           &lt;/xs:attribute&gt;
           &lt;xs:attribute name=&quot;callbackUrl&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
             &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;The URL that the hub should call back, which is the public URL of the HTTP inbound endpoint placed in front of
-the &amp;lt;code&amp;gt;subscriber&amp;lt;/code&amp;gt; element.&lt;/xs:documentation&gt;
+              &lt;xs:documentation&gt;The URL that the hub should call back, which is the public URL of the HTTP
+inbound endpoint placed in front of the &amp;lt;code&amp;gt;subscriber&amp;lt;/code&amp;gt; element.&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:attribute&gt;
           &lt;xs:attribute name=&quot;topic&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
@@ -415,14 +409,14 @@ the &amp;lt;code&amp;gt;subscriber&amp;lt;/code&amp;gt; element.&lt;/xs:document
           &lt;/xs:attribute&gt;
           &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/PuSH-subscriber&quot; name=&quot;leaseSeconds&quot; default=&quot;604800&quot; use=&quot;optional&quot; type=&quot;longType&quot;&gt;
             &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;(Optional) Number of seconds for which the subscriber would like to have the subscription active. Defaults to 7
-days.&lt;/xs:documentation&gt;
+              &lt;xs:documentation&gt;(Optional) Number of seconds for which the subscriber would like to have the
+subscription active. Defaults to 7 days.&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:attribute&gt;
           &lt;xs:attribute name=&quot;secret&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
             &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;(Optional) A subscriber-provided secret string that will be used to compute an HMAC digest for authorized content
-distribution.&lt;/xs:documentation&gt;
+              &lt;xs:documentation&gt;(Optional) A subscriber-provided secret string that will be used to compute an
+HMAC digest for authorized content distribution.&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:attribute&gt;
         &lt;/xs:extension&gt;

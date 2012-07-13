@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  PuSHHubModuleLifecycleAdapter
+  PuSHPublisherModuleCapabilitiesAdapter
 
 
 | Mule PubSubHubbub (aka PuSH) Module
@@ -236,8 +236,8 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/HubModuleCapabilitiesAdapter.html">HubModuleCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/HubModuleLifecycleAdapter.html">HubModuleLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html">PuSHHubModuleCapabilitiesAdapter</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html">PuSHHubModuleLifecycleAdapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHPublisherModuleCapabilitiesAdapter.html">PuSHPublisherModuleCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html">PuSHHubModuleLifecycleAdapter</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHPublisherModuleCapabilitiesAdapter.html">PuSHPublisherModuleCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHPublisherModuleLifecycleAdapter.html">PuSHPublisherModuleLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleCapabilitiesAdapter.html">PuSHSubscriberModuleCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHSubscriberModuleLifecycleAdapter.html">PuSHSubscriberModuleLifecycleAdapter</a></li>
@@ -289,13 +289,6 @@
   
   
   
-  
-
-  
-   
-  
-  
-  
    
   
   
@@ -326,42 +319,6 @@
   
    
   
-  
-  
-  
-
-  
-   
-  
-  
-   
-  
-  
-  
-
-  
-   
-  
-  
-   
-  
-  
-  
-
-  
-   
-  
-  
-   
-  
-  
-  
-
-  
-   
-  
-  
-   
   
   
   
@@ -377,12 +334,9 @@ Summary:
 
 
 
-  <a href="#inhconstants">Inherited Constants</a>
-  
 
 
-
-  &#124; <a href="#inhfields">Inherited Fields</a>
+  <a href="#inhfields">Inherited Fields</a>
   
 
 
@@ -420,7 +374,7 @@ Summary:
      
     
     class
-<h1>PuSHHubModuleLifecycleAdapter</h1>
+<h1>PuSHPublisherModuleCapabilitiesAdapter</h1>
 
 
 
@@ -433,11 +387,7 @@ Summary:
   
 
   
-  
-  
-
-  
-    extends <a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html">PuSHHubModuleCapabilitiesAdapter</a><br/>
+    extends <a href="../../../../../../java/org/mule/module/pubsubhubbub/PuSHPublisherModule.html">PuSHPublisherModule</a><br/>
   
   
   
@@ -446,13 +396,7 @@ Summary:
   
       implements 
       
-        Disposable 
-      
-        Initialisable 
-      
-        Startable 
-      
-        Stoppable 
+        Capabilities 
       
   
   
@@ -468,7 +412,7 @@ Summary:
 
     <tr>
         
-        <td colspan="5" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="4" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -476,7 +420,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/module/pubsubhubbub/AbstractPuSHModule.html">org.mule.module.pubsubhubbub.AbstractPuSHModule</a></td>
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/module/pubsubhubbub/AbstractPuSHModule.html">org.mule.module.pubsubhubbub.AbstractPuSHModule</a></td>
     </tr>
     
 
@@ -486,19 +430,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">org.mule.module.pubsubhubbub.PuSHHubModule</a></td>
-    </tr>
-    
-
-    <tr>
-        
-            <td class="jd-inheritance-space">&nbsp;</td>
-        
-            <td class="jd-inheritance-space">&nbsp;</td>
-        
-            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
-        
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html">org.mule.module.pubsubhubbub.adapters.PuSHHubModuleCapabilitiesAdapter</a></td>
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/module/pubsubhubbub/PuSHPublisherModule.html">org.mule.module.pubsubhubbub.PuSHPublisherModule</a></td>
     </tr>
     
 
@@ -508,11 +440,9 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;</td>
         
-            <td class="jd-inheritance-space">&nbsp;</td>
-        
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.adapters.PuSHHubModuleLifecycleAdapter</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.pubsubhubbub.adapters.PuSHPublisherModuleCapabilitiesAdapter</td>
     </tr>
     
 
@@ -521,6 +451,37 @@ Summary:
 
 
 
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHPublisherModuleLifecycleAdapter.html">PuSHPublisherModuleLifecycleAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/pubsubhubbub/adapters/PuSHPublisherModuleLifecycleAdapter.html">PuSHPublisherModuleLifecycleAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>PuSHPublisherModuleLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/module/pubsubhubbub/PuSHPublisherModule.html">PuSHPublisherModule</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
 
 
 
@@ -528,7 +489,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>A <code>PuSHHubModuleLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/module/pubsubhubbub/PuSHHubModule.html">PuSHHubModule</a></code> that adds lifecycle methods to the pojo.
+<p>A <code>PuSHPublisherModuleCapabilitiesAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/module/pubsubhubbub/PuSHPublisherModule.html">PuSHPublisherModule</a></code> that implements org.mule.api.Capabilities interface.
  
 </p>
 
@@ -573,150 +534,6 @@ Summary:
 
 
 
-<!-- =========== ENUM CONSTANT SUMMARY =========== -->
-<table id="inhconstants" class="jd-sumtable"><tr><th>
-  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
-  <div style="clear:left;">Inherited Constants</div></th></tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.api.lifecycle.Disposable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From interface
-org.mule.api.lifecycle.Disposable
-<div id="inherited-constants-org.mule.api.lifecycle.Disposable">
-  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">String</td>
-        <td class="jd-linkcol">PHASE_NAME</td>
-        <td class="jd-descrcol" width="100%"></td>
-    </tr>
-    
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.api.lifecycle.Initialisable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From interface
-org.mule.api.lifecycle.Initialisable
-<div id="inherited-constants-org.mule.api.lifecycle.Initialisable">
-  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">String</td>
-        <td class="jd-linkcol">PHASE_NAME</td>
-        <td class="jd-descrcol" width="100%"></td>
-    </tr>
-    
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.api.lifecycle.Startable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From interface
-org.mule.api.lifecycle.Startable
-<div id="inherited-constants-org.mule.api.lifecycle.Startable">
-  <div id="inherited-constants-org.mule.api.lifecycle.Startable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-constants-org.mule.api.lifecycle.Startable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">String</td>
-        <td class="jd-linkcol">PHASE_NAME</td>
-        <td class="jd-descrcol" width="100%"></td>
-    </tr>
-    
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.api.lifecycle.Stoppable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From interface
-org.mule.api.lifecycle.Stoppable
-<div id="inherited-constants-org.mule.api.lifecycle.Stoppable">
-  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">String</td>
-        <td class="jd-linkcol">PHASE_NAME</td>
-        <td class="jd-descrcol" width="100%"></td>
-    </tr>
-    
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-</table>
-
-
 
 
 
@@ -728,21 +545,19 @@ org.mule.api.lifecycle.Stoppable
   <div style="clear:left;">Inherited Fields</div></th></tr>
 
 
-
-
 <tr class="api apilevel-" >
 <td colspan="12">
 
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.module.pubsubhubbub.PuSHHubModule" class="jd-expando-trigger closed"
-          ><img id="inherited-fields-org.mule.module.pubsubhubbub.PuSHHubModule-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.module.pubsubhubbub.PuSHPublisherModule" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.module.pubsubhubbub.PuSHPublisherModule-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>From class
-<a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html">org.mule.module.pubsubhubbub.PuSHHubModule</a>
-<div id="inherited-fields-org.mule.module.pubsubhubbub.PuSHHubModule">
-  <div id="inherited-fields-org.mule.module.pubsubhubbub.PuSHHubModule-list"
+<a href="../../../../../../org/mule/module/pubsubhubbub/PuSHPublisherModule.html">org.mule.module.pubsubhubbub.PuSHPublisherModule</a>
+<div id="inherited-fields-org.mule.module.pubsubhubbub.PuSHPublisherModule">
+  <div id="inherited-fields-org.mule.module.pubsubhubbub.PuSHPublisherModule-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-fields-org.mule.module.pubsubhubbub.PuSHHubModule-summary" style="display: none;">
+  <div id="inherited-fields-org.mule.module.pubsubhubbub.PuSHPublisherModule-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -752,65 +567,9 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          <a href="../../../../../../java/org/mule/module/pubsubhubbub/data/DataStore.html">DataStore</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#dataStore">dataStore</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          long</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#defaultLeaseSeconds">defaultLeaseSeconds</a></td>
-          <td class="jd-descrcol" width="100%">The default lease time in milliseconds.</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          PartitionableObjectStore&lt;Serializable&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#objectStore">objectStore</a></td>
-          <td class="jd-descrcol" width="100%">Any implementation of PartitionableObjectStore can be used as a
- back-end for the hub.</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Map&lt;<a href="../../../../../../java/org/mule/module/pubsubhubbub/HubMode.html">HubMode</a>,&nbsp;<a href="../../../../../../java/org/mule/module/pubsubhubbub/handler/AbstractHubActionHandler.html">AbstractHubActionHandler</a>&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#requestHandlers">requestHandlers</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          int</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#retryCount">retryCount</a></td>
-          <td class="jd-descrcol" width="100%">The retry count.</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          int</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#retryFrequency">retryFrequency</a></td>
-          <td class="jd-descrcol" width="100%">The retry frequency in milliseconds.</td>
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHPublisherModule.html#hubUrl">hubUrl</a></td>
+          <td class="jd-descrcol" width="100%">The URL of the PubSubHubbub to connect to.</td>
       </tr>
       
     
@@ -872,14 +631,6 @@ org.mule.api.lifecycle.Stoppable
 
 
 
-
-
-
-
-
-
-
-
 </table>
 
 
@@ -901,7 +652,7 @@ org.mule.api.lifecycle.Stoppable
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html#PuSHHubModuleLifecycleAdapter()">PuSHHubModuleLifecycleAdapter</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHPublisherModuleCapabilitiesAdapter.html#PuSHPublisherModuleCapabilitiesAdapter()">PuSHPublisherModuleCapabilitiesAdapter</a></span>()</nobr>
         
   </td></tr>
 
@@ -927,59 +678,15 @@ org.mule.api.lifecycle.Stoppable
             
             
             
-            void</nobr>
+            boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html#dispose()">dispose</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHPublisherModuleCapabilitiesAdapter.html#isCapableOf(org.mule.api.Capability)">isCapableOf</a></span>(Capability capability)</nobr>
         
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html#initialise()">initialise</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html#start()">start</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHHubModuleLifecycleAdapter.html#stop()">stop</a></span>()</nobr>
-        
+        <div class="jd-descrdiv">Returns true if this module implements such capability
+ 
+</div>
+  
   </td></tr>
 
 
@@ -1000,151 +707,25 @@ org.mule.api.lifecycle.Stoppable
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.pubsubhubbub.adapters.PuSHHubModuleCapabilitiesAdapter" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.module.pubsubhubbub.adapters.PuSHHubModuleCapabilitiesAdapter-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.pubsubhubbub.PuSHPublisherModule" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.pubsubhubbub.PuSHPublisherModule-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From class
 
-  <a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html">org.mule.module.pubsubhubbub.adapters.PuSHHubModuleCapabilitiesAdapter</a>
+  <a href="../../../../../../org/mule/module/pubsubhubbub/PuSHPublisherModule.html">org.mule.module.pubsubhubbub.PuSHPublisherModule</a>
 
-<div id="inherited-methods-org.mule.module.pubsubhubbub.adapters.PuSHHubModuleCapabilitiesAdapter">
-  <div id="inherited-methods-org.mule.module.pubsubhubbub.adapters.PuSHHubModuleCapabilitiesAdapter-list"
+<div id="inherited-methods-org.mule.module.pubsubhubbub.PuSHPublisherModule">
+  <div id="inherited-methods-org.mule.module.pubsubhubbub.PuSHPublisherModule-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.module.pubsubhubbub.adapters.PuSHHubModuleCapabilitiesAdapter-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.module.pubsubhubbub.PuSHPublisherModule-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            boolean</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/adapters/PuSHHubModuleCapabilitiesAdapter.html#isCapableOf(org.mule.api.Capability)">isCapableOf</a></span>(Capability capability)</nobr>
-        
-        <div class="jd-descrdiv">Returns true if this module implements such capability
- 
-</div>
-  
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.pubsubhubbub.PuSHHubModule" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.module.pubsubhubbub.PuSHHubModule-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From class
-
-  <a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html">org.mule.module.pubsubhubbub.PuSHHubModule</a>
-
-<div id="inherited-methods-org.mule.module.pubsubhubbub.PuSHHubModule">
-  <div id="inherited-methods-org.mule.module.pubsubhubbub.PuSHHubModule-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.module.pubsubhubbub.PuSHHubModule-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../java/org/mule/module/pubsubhubbub/data/DataStore.html">DataStore</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#getDataStore()">getDataStore</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            long</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#getDefaultLeaseSeconds()">getDefaultLeaseSeconds</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            PartitionableObjectStore&lt;Serializable&gt;</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#getObjectStore()">getObjectStore</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#getRetryCount()">getRetryCount</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#getRetryFrequency()">getRetryFrequency</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1154,9 +735,26 @@ From class
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#handleHubRequest(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)">handleHubRequest</a></span>(String httpMethod, String contentType, Map&lt;String,&nbsp;Object&gt; responseHeaders, String payload)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHPublisherModule.html#getHubUrl()">getHubUrl</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Handle all hub requests.</div>
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHPublisherModule.html#notifyNewContent(java.lang.String)">notifyNewContent</a></span>(String topic)</nobr>
+        
+        <div class="jd-descrdiv">Notifies the configured hub that new content is available for the considered
+ topic.</div>
   
   </td></tr>
 
@@ -1172,7 +770,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#setDefaultLeaseSeconds(long)">setDefaultLeaseSeconds</a></span>(long defaultLeaseSeconds)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHPublisherModule.html#setHubUrl(java.lang.String)">setHubUrl</a></span>(String hubUrl)</nobr>
         
   </td></tr>
 
@@ -1188,55 +786,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#setObjectStore(org.mule.api.store.PartitionableObjectStore<java.io.Serializable>)">setObjectStore</a></span>(PartitionableObjectStore&lt;Serializable&gt; objectStore)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#setRetryCount(int)">setRetryCount</a></span>(int retryCount)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#setRetryFrequency(int)">setRetryFrequency</a></span>(int retryFrequency)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHHubModule.html#wireResources()">wireResources</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/pubsubhubbub/PuSHPublisherModule.html#validateConfiguration()">validateConfiguration</a></span>()</nobr>
         
   </td></tr>
 
@@ -1607,174 +1157,6 @@ From interface
 </td></tr>
 
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.lifecycle.Disposable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.lifecycle.Disposable
-
-<div id="inherited-methods-org.mule.api.lifecycle.Disposable">
-  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">dispose</span>()</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.lifecycle.Initialisable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.lifecycle.Initialisable
-
-<div id="inherited-methods-org.mule.api.lifecycle.Initialisable">
-  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">initialise</span>()</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.lifecycle.Startable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.lifecycle.Startable
-
-<div id="inherited-methods-org.mule.api.lifecycle.Startable">
-  <div id="inherited-methods-org.mule.api.lifecycle.Startable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.lifecycle.Startable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">start</span>()</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.lifecycle.Stoppable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.lifecycle.Stoppable
-
-<div id="inherited-methods-org.mule.api.lifecycle.Stoppable">
-  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">stop</span>()</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
 </table>
 
 
@@ -1809,7 +1191,7 @@ From interface
 
 
 
-<A NAME="PuSHHubModuleLifecycleAdapter()"></A>
+<A NAME="PuSHPublisherModuleCapabilitiesAdapter()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1821,7 +1203,7 @@ From interface
          
         
       </span>
-      <span class="sympad">PuSHHubModuleLifecycleAdapter</span>
+      <span class="sympad">PuSHPublisherModuleCapabilitiesAdapter</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1855,7 +1237,7 @@ From interface
 
 
 
-<A NAME="dispose()"></A>
+<A NAME="isCapableOf(org.mule.api.Capability)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1865,10 +1247,10 @@ From interface
          
          
          
-        void
+        boolean
       </span>
-      <span class="sympad">dispose</span>
-      <span class="normal">()</span>
+      <span class="sympad">isCapableOf</span>
+      <span class="normal">(Capability capability)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1880,115 +1262,15 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="initialise()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">initialise</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="start()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">start</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Returns true if this module implements such capability
+ 
+</p></div>
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
         <tr>
-            <th>MuleException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="stop()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">stop</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>MuleException</td>
-            <td></td>
+          <th>capability</td>
+          <td></td>
         </tr>
       </table>
   </div>

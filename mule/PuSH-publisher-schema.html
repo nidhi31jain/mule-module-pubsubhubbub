@@ -75,7 +75,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 <title>
 
-  PuSHHubModule
+  PuSHPublisherModule
 
 
 | Mule PubSubHubbub (aka PuSH) Module
@@ -224,9 +224,9 @@
 <div class="jd-tagdata">
       <table class="jd-tagtable">
         <tbody><tr>
-          <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/PuSH-hub</td>
+          <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/PuSH-publisher</td>
         </tr><tr>
-          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/PuSH-hub/current/mule-PuSH-hub.xsd&nbsp;&nbsp;(<a href="PuSH-hub-schema.html">View Schema</a>)</td>
+          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/PuSH-publisher/current/mule-PuSH-publisher.xsd&nbsp;&nbsp;(<a href="PuSH-publisher-schema.html">View Schema</a>)</td>
         </tr>
 <tr>
           <th>Schema Version</th><td>3.3</td>
@@ -241,7 +241,7 @@
 <h2>Schema</h2>
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
-&lt;xs:schema xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot; targetNamespace=&quot;http://www.mulesoft.org/schema/mule/PuSH-hub&quot;&gt;
+&lt;xs:schema xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot; targetNamespace=&quot;http://www.mulesoft.org/schema/mule/PuSH-publisher&quot;&gt;
   &lt;xs:import namespace=&quot;http://www.w3.org/XML/1998/namespace&quot;&gt;&lt;/xs:import&gt;
   &lt;xs:import schemaLocation=&quot;http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot; namespace=&quot;http://www.springframework.org/schema/beans&quot;&gt;&lt;/xs:import&gt;
   &lt;xs:import schemaLocation=&quot;http://www.mulesoft.org/schema/mule/core/current/mule.xsd&quot; namespace=&quot;http://www.mulesoft.org/schema/mule/core&quot;&gt;&lt;/xs:import&gt;
@@ -379,55 +379,45 @@
       &lt;/xs:annotation&gt;
     &lt;/xs:attribute&gt;
   &lt;/xs:complexType&gt;
-  &lt;xs:element xmlns:devkit=&quot;http://www.mulesoft.org/schema/mule/devkit&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;config&quot; substitutionGroup=&quot;mule:abstract-extension&quot; devkit:javaClass=&quot;org.mule.module.pubsubhubbub.adapters.PuSHHubModuleLifecycleAdapter&quot;&gt;
+  &lt;xs:element xmlns:devkit=&quot;http://www.mulesoft.org/schema/mule/devkit&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;config&quot; substitutionGroup=&quot;mule:abstract-extension&quot; devkit:javaClass=&quot;org.mule.module.pubsubhubbub.adapters.PuSHPublisherModuleLifecycleAdapter&quot;&gt;
     &lt;xs:complexType&gt;
       &lt;xs:complexContent&gt;
         &lt;xs:extension base=&quot;mule:abstractExtensionType&quot;&gt;
           &lt;xs:annotation&gt;
-            &lt;xs:documentation&gt;Allows Mule to act as a PubSubHubbub (aka PuSH) hub.&lt;/xs:documentation&gt;
+            &lt;xs:documentation&gt;Allows Mule to act as a PubSubHubbub (aka PuSH) publisher.&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
           &lt;xs:attribute name=&quot;name&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
             &lt;xs:annotation&gt;
               &lt;xs:documentation&gt;Give a name to this configuration so it can be later referenced by config-ref.&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:attribute&gt;
-          &lt;xs:attribute name=&quot;objectStore-ref&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:attribute name=&quot;hubUrl&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
             &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;Any implementation of  can be used as a
-back-end for the hub.&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:attribute&gt;
-          &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/PuSH-hub&quot; name=&quot;retryFrequency&quot; default=&quot;300000&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;The retry frequency in milliseconds. Defaults to 5 minutes.&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:attribute&gt;
-          &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/PuSH-hub&quot; name=&quot;retryCount&quot; default=&quot;12&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;The retry count. Defaults to 12 times.&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:attribute&gt;
-          &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/PuSH-hub&quot; name=&quot;defaultLeaseSeconds&quot; default=&quot;604800&quot; use=&quot;optional&quot; type=&quot;longType&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;The default lease time in milliseconds. Defaults to 7 days.&lt;/xs:documentation&gt;
+              &lt;xs:documentation&gt;The URL of the PubSubHubbub to connect to.&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:attribute&gt;
         &lt;/xs:extension&gt;
       &lt;/xs:complexContent&gt;
     &lt;/xs:complexType&gt;
   &lt;/xs:element&gt;
-  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/PuSH-hub&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;hub&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;HubType&quot;&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/PuSH-publisher&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;notify-new-content&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;NotifyNewContentType&quot;&gt;
     &lt;xs:annotation&gt;
-      &lt;xs:documentation&gt;Handle all hub requests.
+      &lt;xs:documentation&gt;Notifies the configured hub that new content is available for the considered
+topic.
 &amp;lt;p/&amp;gt;&lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
   &lt;/xs:element&gt;
-  &lt;xs:complexType name=&quot;HubType&quot;&gt;
+  &lt;xs:complexType name=&quot;NotifyNewContentType&quot;&gt;
     &lt;xs:complexContent&gt;
       &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
         &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;topic&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the topic URL for which the publisher wants to notify that new content is available&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
       &lt;/xs:extension&gt;
