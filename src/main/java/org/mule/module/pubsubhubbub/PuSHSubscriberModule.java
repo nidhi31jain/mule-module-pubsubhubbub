@@ -140,7 +140,7 @@ public class PuSHSubscriberModule extends AbstractPuSHModule
      *            representing, should be either an integer or a Mule expression
      * @param sourceCallback the callback to call when content is propagated
      * @return the response body
-     * @throws Exception
+     * @throws Exception thrown in case anything goes haywire
      */
     @Processor(name = "subscriber", intercepting = true)
     public String handleSubscriberRequest(@InboundHeaders(HttpConnector.HTTP_METHOD_PROPERTY) final String httpMethod,

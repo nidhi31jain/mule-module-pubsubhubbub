@@ -113,14 +113,13 @@ public class PuSHHubModule extends AbstractPuSHModule
      * @param contentType the content-type of the request
      * @param responseHeaders the outbound/response headers
      * @return the response body
-     * @throws MuleException
-     * @throws DecoderException
+     * @throws Exception thrown in case anything goes haywire
      */
     @Processor(name = "hub")
     public String handleHubRequest(@InboundHeaders(HttpConnector.HTTP_METHOD_PROPERTY) final String httpMethod,
                                    @InboundHeaders(HttpConstants.HEADER_CONTENT_TYPE) final String contentType,
                                    @OutboundHeaders final Map<String, Object> responseHeaders,
-                                   @Payload final String payload) throws MuleException, DecoderException
+                                   @Payload final String payload) throws Exception
     {
         if (!StringUtils.equalsIgnoreCase(httpMethod, HttpConstants.METHOD_POST))
         {

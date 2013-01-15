@@ -1,9 +1,5 @@
 <!-- BEGIN_INCLUDE(PuSH-hub:handleHubRequest) -->
-<flow name="hub">
-    <http:inbound-endpoint address="http://localhost:${port1}/hub"
-        exchange-pattern="request-response" />
-    <PuSH-hub:hub />
-</flow>
+<PuSH-hub:hub />
 <!-- END_INCLUDE(PuSH-hub:handleHubRequest) -->
 <!-- BEGIN_INCLUDE(PuSH-hub:config) -->
 <PuSH-hubconfig objectStore-ref="hubObjectStore"
@@ -13,21 +9,16 @@
 <!-- END_INCLUDE(PuSH-hub:config) -->
 
 <!-- BEGIN_INCLUDE(PuSH-subscriber:handleSubscriberRequest) -->
-<flow name="subscriber">
-    <http:inbound-endpoint address="http://localhost:${port2}/subscriber"
-        exchange-pattern="request-response" />
-    <PuSH-sub:subscriber />
-    <!-- rest of the flow handles content delivery -->
-</flow>
+<PuSH-subscriber:subscriber />
 <!-- END_INCLUDE(PuSH-subscriber:handleSubscriberRequest) -->
 <!-- BEGIN_INCLUDE(PuSH-subscriber:config) -->
-<PuSH-sub:config hubUrl="https://pubsubhubbub.appspot.com"
-                 callbackUrl="http://some.public-domain.com/subscriber"
-                 topic="http://blogs.mulesoft.com" />
+<PuSH-subscriber:config hubUrl="https://pubsubhubbub.appspot.com"
+                        callbackUrl="http://some.public-domain.com/subscriber"
+                        topic="http://blogs.mulesoft.com" />
 <!-- END_INCLUDE(PuSH-subscriber:config) -->
 
 <!-- BEGIN_INCLUDE(PuSH-publisher:notifyNewContent) -->
-<PuSH-pub:notify-new-content topic="http://blogs.mulesoft.com" />
+<PuSH-publisher:notify-new-content topic="http://blogs.mulesoft.com" />
 <!-- END_INCLUDE(PuSH-publisher:notifyNewContent) -->
 <!-- BEGIN_INCLUDE(PuSH-publisher:config) -->
 <PuSH-publisher:config hubUrl="https://pubsubhubbub.appspot.com" />
